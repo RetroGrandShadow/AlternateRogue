@@ -20,10 +20,9 @@ func _physics_process(delta) -> void:
 	if input_dir.length() > 0:
 		animated_sprite.animation = "run"
 		velocity = velocity.move_toward(input_dir * speed, ACCELERATION * delta)
-		# get the angel
-		var angel = input_dir.angle()
-		angel = wrapi(int(angel), 0, 2)
-		if angel == 0:
+		print(input_dir)
+
+		if input_dir.x > 0:
 			animated_sprite.flip_h = false
 		else:
 			animated_sprite.flip_h = true
