@@ -11,9 +11,18 @@ config_version=5
 [application]
 
 config/name="Alternative Rogue"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="res://scenes/world.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Events="*res://scripts/events.gd"
+
+[display]
+
+window/size/viewport_width=900
+window/size/viewport_height=518
 
 [input]
 

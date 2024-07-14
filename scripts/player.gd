@@ -4,34 +4,31 @@ var speed: int = 150
 var screen_size: Vector2
 var input_dir: Vector2
 @onready var animated_sprite = $AnimatedSprite2D
+const ACCELERATION = 1000.0
+const FRICTION = 200.0
 
-
-func _ready():
+func _ready() -> void:
 	# set player on the center of a screen
 	screen_size = get_viewport_rect().size
 	position = screen_size / 2
 	
-
-func get_input():
+func _physics_process(delta) -> void:
 	# keybord input
 	input_dir = Input.get_vector("left", "right", "up", "down")
-	velocity = input_dir * speed
 	
-func _physics_process(delta):
-	# player movement
-	get_input()
-	move_and_slide()
-	
-	# get the angel
-	var angel = input_dir.angle()
-	angel = wrapi(int(angel), 0, 2)
-	
-	# animation
-	if velocity.length() == 0:
-		animated_sprite.animation = "idle"
-	else:
+	# movement and animation
+	if input_dir.length() > 0:
 		animated_sprite.animation = "run"
+		velocity = velocity.move_toward(input_dir * speed, ACCELERATION * delta)
+		# get the angel
+		var angel = input_dir.angle()
+		angel = wrapi(int(angel), 0, 2)
 		if angel == 0:
 			animated_sprite.flip_h = false
 		else:
 			animated_sprite.flip_h = true
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+		animated_sprite.animation = "idle"
+			
+	move_and_slide()
