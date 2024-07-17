@@ -26,19 +26,26 @@ func _get_damage(attack_damage: int) -> void:
 	current_health -= attack_damage
 
 
-func _on_hit_box_body_entered(body: Node2D) -> void:
-	if body is Enemy: 
-		_get_damage(1)
-		health_changed.emit(current_health)
+#func _on_hit_box_body_entered(body: Node2D) -> void:
+	#if body is Enemy: 
+		#_get_damage(1)
+		#health_changed.emit(current_health)
 		
 		
+func _on_hit_box_area_entered(area: Area2D) -> void:
+	if area.name == "Weapon":
+		if current_health > 0:
+			_get_damage(area.get_parent().attack_damage)
+			health_changed.emit(current_health)
+	
+
 		
 func die() -> void:
 	animated_sprite.play("die")
 	if !animated_sprite.animation_finished:
 		animated_sprite.stop()
 
-func update_animation(delta) -> void:
+func update_animation(delta: float) -> void:
 	# keybord input
 	input_dir = Input.get_vector("left", "right", "up", "down")
 	
@@ -58,7 +65,7 @@ func update_animation(delta) -> void:
 		animated_sprite.animation = "idle"
 
 
-func _physics_process(delta) -> void:
+func _physics_process(delta: float) -> void:
 	if current_health > 0:
 		update_animation(delta)
 		move_and_slide()
@@ -71,7 +78,10 @@ func _physics_process(delta) -> void:
 
 
 
-func _on_animated_sprite_2d_animation_looped():
+func _on_animated_sprite_2d_animation_looped() -> void:
 	if did_died:
 		animated_sprite.frame = 9
 		animated_sprite.pause()
+
+
+

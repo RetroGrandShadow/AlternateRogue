@@ -13,6 +13,8 @@ var target_position: Vector2
 @onready var animation = $AnimationPlayer
 @onready var sprite = $Sprite2D
 
+var attack_damage: int = 1
+
 func _get_damage(attack_damage: int) -> void:
 	current_health -= attack_damage
 
