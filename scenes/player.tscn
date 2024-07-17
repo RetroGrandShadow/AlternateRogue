@@ -317,10 +317,10 @@ script = ExtResource("1_ndrpc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vs0l2")
-animation = &"shoot"
+animation = &"die"
 autoplay = "idle"
 frame = 1
-frame_progress = 0.135394
+frame_progress = 0.432728
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-1, 1, 4, 6, -1, 11, -6, 6)
@@ -332,4 +332,5 @@ collision_mask = 3
 position = Vector2(-1, 2)
 shape = SubResource("CapsuleShape2D_fys0t")
 
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
