@@ -1,5 +1,8 @@
-[gd_scene format=3 uid="uid://ddryb35b7nudj"]
+[gd_scene load_steps=2 format=3 uid="uid://ddryb35b7nudj"]
+
+[ext_resource type="Script" path="res://scripts/hearth_container.gd" id="1_ctlje"]
 
 [node name="HearthContainer" type="HBoxContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+scale = Vector2(3, 3)
+theme_override_constants/separation = 2
+script = ExtResource("1_ctlje")
