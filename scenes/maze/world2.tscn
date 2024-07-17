@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsdllha3rqx7p"]
+
+[ext_resource type="PackedScene" uid="uid://bht8bjtp8lbtu" path="res://scenes/player.tscn" id="1_8ddqt"]
+[ext_resource type="Script" path="res://scripts/Camera2D.gd" id="2_jf2jf"]
+[ext_resource type="PackedScene" uid="uid://cobf34q76m1ix" path="res://scenes/maze/floors/floor1.tscn" id="3_t0kw1"]
+[ext_resource type="PackedScene" path="res://scenes/purple_goblin.tscn" id="4_d4ojx"]
+
+[node name="World" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_8ddqt")]
+z_index = 9
+position = Vector2(377, 280)
+scale = Vector2(3, 3)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2(482, 259)
+scale = Vector2(3, 3)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("2_jf2jf")
+
+[node name="Floor1" parent="." instance=ExtResource("3_t0kw1")]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="PurpleGoblin" parent="Enemies" instance=ExtResource("4_d4ojx")]
+position = Vector2(683, 272)
+
+[connection signal="body_entered" from="Enemies/PurpleGoblin/HitBox" to="Player" method="_on_hit_box_body_entered"]
+
+[editable path="Enemies/PurpleGoblin"]

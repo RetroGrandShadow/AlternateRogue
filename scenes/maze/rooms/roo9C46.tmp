@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://j1wi2ksfhlat"]
+[gd_scene load_steps=9 format=3 uid="uid://j1wi2ksfhlat"]
 
 [ext_resource type="TileSet" uid="uid://b3x77y7ht6aqa" path="res://assets/tiles/new_tile_set.tres" id="1_mqnd7"]
 [ext_resource type="Script" path="res://scripts/door.gd" id="2_f4elo"]
+[ext_resource type="PackedScene" uid="uid://bht8bjtp8lbtu" path="res://scenes/player.tscn" id="3_6vj4p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5amc"]
 size = Vector2(20, 9.33333)
@@ -65,3 +66,6 @@ shape = SubResource("RectangleShape2D_3y386")
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(248.333, -5)
 shape = SubResource("RectangleShape2D_0p61u")
+
+[node name="Player" parent="." instance=ExtResource("3_6vj4p")]
+position = Vector2(80, 74.3333)

@@ -1,0 +1,41 @@
+[gd_scene load_steps=10 format=3 uid="uid://c24d1nkv7fmlv"]
+
+[ext_resource type="PackedScene" uid="uid://clb0j4vy3at68" path="res://scenes/maze/rooms/room11.tscn" id="1_bav6k"]
+[ext_resource type="PackedScene" uid="uid://doq0yuqplung4" path="res://scenes/maze/rooms/room9.tscn" id="2_euhy7"]
+[ext_resource type="PackedScene" uid="uid://bji3nk44wronq" path="res://scenes/maze/rooms/room8.tscn" id="3_qgsdp"]
+[ext_resource type="PackedScene" uid="uid://dwpq04kypclil" path="res://scenes/maze/rooms/room12.tscn" id="4_rox0v"]
+[ext_resource type="PackedScene" uid="uid://cncpw85ccmyl" path="res://scenes/maze/rooms/room13.tscn" id="5_ufldb"]
+[ext_resource type="PackedScene" uid="uid://c8tw73hxoh3db" path="res://scenes/maze/rooms/room14.tscn" id="6_2ngyk"]
+[ext_resource type="PackedScene" uid="uid://dhof3dyrrvme6" path="res://scenes/maze/rooms/room15.tscn" id="7_6ke6p"]
+[ext_resource type="PackedScene" uid="uid://bk83x14iaa68q" path="res://scenes/maze/rooms/room18.tscn" id="8_lchnu"]
+[ext_resource type="PackedScene" uid="uid://4wmndglbx6ba" path="res://scenes/maze/rooms/room19.tscn" id="9_het2u"]
+
+[node name="Floor3" type="TileMap"]
+format = 2
+
+[node name="Room4" parent="." instance=ExtResource("1_bav6k")]
+position = Vector2(90, 2057.87)
+
+[node name="Room1" parent="." instance=ExtResource("2_euhy7")]
+position = Vector2(-216.841, -94)
+
+[node name="Room2" parent="." instance=ExtResource("3_qgsdp")]
+position = Vector2(874, 48.8663)
+
+[node name="Room5" parent="." instance=ExtResource("4_rox0v")]
+position = Vector2(-599, 1496.87)
+
+[node name="Room6" parent="." instance=ExtResource("5_ufldb")]
+position = Vector2(772, 888.866)
+
+[node name="Room7" parent="." instance=ExtResource("6_2ngyk")]
+position = Vector2(2636, 2908)
+
+[node name="Room8" parent="." instance=ExtResource("7_6ke6p")]
+position = Vector2(462, 1547.87)
+
+[node name="Room9" parent="." instance=ExtResource("8_lchnu")]
+position = Vector2(1923, 2300)
+
+[node name="Room3" parent="." instance=ExtResource("9_het2u")]
+position = Vector2(1598, 1455)

@@ -14,12 +14,12 @@ func _get_damage(attack_damage: int) -> void:
 	current_health -= attack_damage
 
 
-func _on_hit_box_body_entered(body: Node2D) -> void:
-	print("dupa") # to debug 
-	if body is Player: # change Player to Bullet class when it will exist
-		_get_damage(1) # TODO in future change to bullet damage
-		if current_health <= 0:
-			queue_free()
+#func _on_hit_box_body_entered(body: Node2D) -> void:
+	#print("dupa") # to debug 
+	#if body is Player: # change Player to Bullet class when it will exist
+		#_get_damage(1) # TODO in future change to bullet damage
+		#if current_health <= 0:
+			#queue_free()
 		
 
 
