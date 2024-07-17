@@ -24,6 +24,10 @@ Events="*res://scripts/events.gd"
 window/size/viewport_width=900
 window/size/viewport_height=518
 
+[dotnet]
+
+project/assembly_name="Alternative Rogue"
+
 [input]
 
 up={
