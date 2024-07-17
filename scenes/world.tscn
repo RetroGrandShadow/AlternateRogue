@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://sh3iohl3k37k"]
+[gd_scene load_steps=8 format=3 uid="uid://sh3iohl3k37k"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_asp4o"]
 [ext_resource type="PackedScene" uid="uid://bht8bjtp8lbtu" path="res://scenes/player.tscn" id="1_nq2cp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="3_q0w4n"]
 [ext_resource type="PackedScene" uid="uid://bxg1gmds1upa8" path="res://scenes/purple_goblin.tscn" id="4_sx25o"]
 [ext_resource type="PackedScene" uid="uid://ddryb35b7nudj" path="res://scenes/hearth_container.tscn" id="5_b2rs6"]
+[ext_resource type="PackedScene" uid="uid://6fldiatqmhty" path="res://scenes/dungeonroom2.tscn" id="5_ujkoc"]
 
 [node name="World" type="Node"]
 script = ExtResource("1_asp4o")
@@ -31,6 +32,9 @@ script = ExtResource("3_q0w4n")
 
 [node name="PurpleGoblin" parent="Enemies" instance=ExtResource("4_sx25o")]
 position = Vector2(683, 272)
+
+[node name="DungeonRoom3" parent="." instance=ExtResource("5_ujkoc")]
+position = Vector2(18, -1622)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
