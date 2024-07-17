@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cckkqhjp7huud"]
+[gd_scene load_steps=12 format=3 uid="uid://cckkqhjp7huud"]
 
 [ext_resource type="Texture2D" uid="uid://k4lcu5byuyl" path="res://assets/kennny-tiny-dungeon/Tilemap/tilemap.png" id="1_pf7ts"]
 [ext_resource type="PackedScene" uid="uid://be45on3og2vp4" path="res://scenes/door.tscn" id="2_2pqnt"]
 [ext_resource type="Script" path="res://scripts/dungeonroom.gd" id="2_7hxho"]
+[ext_resource type="PackedScene" uid="uid://7pa85rotxr" path="res://scenes/EnemySpawner.tscn" id="4_jfjsj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rdyv"]
 texture = ExtResource("1_pf7ts")
@@ -498,6 +499,8 @@ shape = SubResource("RectangleShape2D_ibojp")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(158.333, 86.6667)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("4_jfjsj")]
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 
