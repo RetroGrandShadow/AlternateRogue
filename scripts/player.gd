@@ -11,13 +11,14 @@ var input_dir: Vector2
 const ACCELERATION = 1000.0
 const FRICTION = 200.0
 
+var bullet_scene = preload("res://scenes/AnimatedBullet.tscn")
 @export var max_health: int = 3
 @onready var current_health: int = max_health
 
 var did_died: bool = false
 
 func _ready() -> void:
-	# set player on the center of a screen
+	# Set player at the center of the screen
 	screen_size = get_viewport_rect().size
 	position = screen_size / 2
 	
@@ -26,11 +27,20 @@ func _get_damage(attack_damage: int) -> void:
 	current_health -= attack_damage
 
 
+<<<<<<< HEAD
 #func _on_hit_box_body_entered(body: Node2D) -> void:
 	#if body is Enemy: 
 		#_get_damage(1)
 		#health_changed.emit(current_health)
 		
+=======
+func _on_hit_box_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		_get_damage(1)
+		health_changed.emit(current_health)
+		# if not in dungeon already, teleport to marker
+
+>>>>>>> origin/master
 		
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	if area.name == "Weapon":
@@ -48,8 +58,8 @@ func die() -> void:
 func update_animation(delta: float) -> void:
 	# keybord input
 	input_dir = Input.get_vector("left", "right", "up", "down")
-	
-	# movement and animation
+
+	# Movement and animation
 	if input_dir.length() > 0:
 		# start animation and move player
 		animated_sprite.animation = "run"
@@ -64,6 +74,12 @@ func update_animation(delta: float) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 		animated_sprite.animation = "idle"
 
+func shoot():
+	var bullet = bullet_scene.instantiate()
+	bullet.position = position
+	bullet.direction = input_dir.normalized()
+	get_parent().add_child(bullet)
+
 
 func _physics_process(delta: float) -> void:
 	if current_health > 0:
@@ -75,8 +91,8 @@ func _physics_process(delta: float) -> void:
 			did_died = true
 		else:
 			pass
-
-
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
 
 func _on_animated_sprite_2d_animation_looped() -> void:
 	if did_died:

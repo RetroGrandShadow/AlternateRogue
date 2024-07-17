@@ -17,18 +17,16 @@ var attack_damage: int = 1
 
 func _get_damage(attack_damage: int) -> void:
 	current_health -= attack_damage
-
+	if current_health <= 0:
+		queue_free()
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
-	print("mob hitted") # to debug 
-	if body is Player: # change Player to Bullet class when it will exist
-		_get_damage(1) # TODO in future change to bullet damage
-		if current_health <= 0:
-			queue_free()
-		
+	print("goblin got hit by something")
+	if body is Bullet:
+		print("it was a bullet")
+		_get_damage(body.attack_damage)
 
 func _physics_process(delta) -> void:
-	
 	player_position = player.position
 	target_position = (player_position - position).normalized()
 	
