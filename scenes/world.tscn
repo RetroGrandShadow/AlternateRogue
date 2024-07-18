@@ -33,6 +33,9 @@ script = ExtResource("3_q0w4n")
 [node name="PurpleGoblin" parent="Enemies" instance=ExtResource("4_sx25o")]
 position = Vector2(683, 272)
 
+[node name="FlippableShape" parent="Enemies/PurpleGoblin/Weapon" index="0"]
+rotation = 1.5708
+
 [node name="DungeonRoom3" parent="." instance=ExtResource("5_ujkoc")]
 position = Vector2(18, -1622)
 

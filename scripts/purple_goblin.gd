@@ -11,9 +11,12 @@ var target_position: Vector2
 @onready var current_health: int = 2
 
 @onready var animation = $AnimationPlayer
-@onready var sprite = $Sprite2D
+@onready var sprite = $FlippableSprite
+@onready var weapon = $Weapon
 
 var attack_damage: int = 1
+
+var flipped = false
 
 func _get_damage(attack_damage: int) -> void:
 	current_health -= attack_damage
@@ -30,15 +33,27 @@ func _physics_process(delta) -> void:
 	player_position = player.position
 	target_position = (player_position - position).normalized()
 	
-	if position.distance_to(player_position) > 40: 
+	
+	
+	if position.distance_to(player_position) > 50: 
 		velocity = velocity.move_toward(target_position * SPEED, ACCELERATION * delta)
 		animation.play("run")
 		if target_position.x < 0:
 			sprite.flip_h = true
 		else:
 			sprite.flip_h = false
+		
+		if flipped != sprite.flip_h:
+			weapon.scale.x *= -1
+			flipped = sprite.flip_h
 		move_and_slide()
+		print(target_position)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, ACCELERATION * delta)
-		animation.play("attack")
+		if abs(target_position.y) < 0.5:
+			animation.play("attack")
+		elif target_position.y > 0.5:
+			animation.play("attack_down")
+		else:
+			animation.play("attack_up")
 

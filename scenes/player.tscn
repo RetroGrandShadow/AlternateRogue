@@ -334,4 +334,3 @@ shape = SubResource("CapsuleShape2D_fys0t")
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
-[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

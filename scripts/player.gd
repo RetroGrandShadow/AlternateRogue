@@ -26,21 +26,6 @@ func _ready() -> void:
 func _get_damage(attack_damage: int) -> void:
 	current_health -= attack_damage
 
-
-<<<<<<< HEAD
-#func _on_hit_box_body_entered(body: Node2D) -> void:
-	#if body is Enemy: 
-		#_get_damage(1)
-		#health_changed.emit(current_health)
-		
-=======
-func _on_hit_box_body_entered(body: Node2D) -> void:
-	if body is Enemy:
-		_get_damage(1)
-		health_changed.emit(current_health)
-		# if not in dungeon already, teleport to marker
-
->>>>>>> origin/master
 		
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	if area.name == "Weapon":
