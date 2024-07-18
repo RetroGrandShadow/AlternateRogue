@@ -1,33 +1,32 @@
 [gd_scene load_steps=8 format=3 uid="uid://cobf34q76m1ix"]
 
-[ext_resource type="PackedScene" uid="uid://j1wi2ksfhlat" path="res://scenes/maze/rooms/room1.tscn" id="1_y0rak"]
-[ext_resource type="PackedScene" uid="uid://da0x01gjghq4j" path="res://scenes/maze/rooms/room2.tscn" id="2_leuwh"]
-[ext_resource type="PackedScene" uid="uid://bvbapi5xbvhyw" path="res://scenes/maze/rooms/room3.tscn" id="3_m43xy"]
-[ext_resource type="PackedScene" uid="uid://bj3k21je1vg7c" path="res://scenes/maze/rooms/room4.tscn" id="4_y0u2t"]
-[ext_resource type="PackedScene" uid="uid://co6xi7t2kg1j" path="res://scenes/maze/rooms/room5.tscn" id="5_ymkii"]
-[ext_resource type="PackedScene" uid="uid://csxf6y1puwcmh" path="res://scenes/maze/rooms/room6.tscn" id="6_sp4yu"]
-[ext_resource type="PackedScene" uid="uid://dogdhb8v4uhvt" path="res://scenes/maze/rooms/room7.tscn" id="7_n36km"]
+[ext_resource type="PackedScene" uid="uid://d1mfarg6hqqcq" path="res://scenes/maze/newRooms/room1.tscn" id="1_sn7ye"]
+[ext_resource type="PackedScene" uid="uid://ct7xw2sxcgm3n" path="res://scenes/maze/newRooms/room2.tscn" id="2_fmqrx"]
+[ext_resource type="PackedScene" uid="uid://cuavi6hlokbll" path="res://scenes/maze/newRooms/room13.tscn" id="3_3b51c"]
+[ext_resource type="PackedScene" uid="uid://2t245wfyqn67" path="res://scenes/maze/newRooms/room4.tscn" id="4_dshio"]
+[ext_resource type="PackedScene" uid="uid://ld6iinu1svm" path="res://scenes/maze/newRooms/room5.tscn" id="5_u3xag"]
+[ext_resource type="PackedScene" uid="uid://cejpuu4g21pto" path="res://scenes/maze/newRooms/room6.tscn" id="6_4esh0"]
+[ext_resource type="PackedScene" uid="uid://cuu0qeu8gonid" path="res://scenes/maze/newRooms/room7.tscn" id="7_s8gi6"]
 
-[node name="Floor1" type="TileMap"]
-format = 2
+[node name="Floor1" type="Node"]
 
-[node name="Room2" parent="." instance=ExtResource("2_leuwh")]
-position = Vector2(40, -795)
+[node name="NewRoom1" parent="." instance=ExtResource("1_sn7ye")]
+position = Vector2(-9, -37)
 
-[node name="Room1" parent="." instance=ExtResource("1_y0rak")]
-position = Vector2(-33, 89)
+[node name="NewRoom" parent="." instance=ExtResource("2_fmqrx")]
+position = Vector2(-9, -578)
 
-[node name="Room3" parent="." instance=ExtResource("3_m43xy")]
-position = Vector2(633, -1328)
+[node name="NewRoom2" parent="." instance=ExtResource("3_3b51c")]
+position = Vector2(660, -1103)
 
-[node name="Room4" parent="." instance=ExtResource("4_y0u2t")]
-position = Vector2(1316, -2018)
+[node name="NewRoom3" parent="." instance=ExtResource("4_dshio")]
+position = Vector2(1092, -1631)
 
-[node name="Room5" parent="." instance=ExtResource("5_ymkii")]
-position = Vector2(422, -2210)
+[node name="NewRoom4" parent="." instance=ExtResource("5_u3xag")]
+position = Vector2(612, -2158)
 
-[node name="Room6" parent="." instance=ExtResource("6_sp4yu")]
-position = Vector2(-687, -2347)
+[node name="NewRoom5" parent="." instance=ExtResource("6_4esh0")]
+position = Vector2(-348, -2298)
 
-[node name="Room7" parent="." instance=ExtResource("7_n36km")]
-position = Vector2(2091, -2158)
+[node name="NewRoom6" parent="." instance=ExtResource("7_s8gi6")]
+position = Vector2(2052, -1775)

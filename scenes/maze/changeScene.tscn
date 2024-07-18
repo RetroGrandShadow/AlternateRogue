@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://jwess2ts2ur1"]
+
+[ext_resource type="Script" path="res://scripts/newScene/scene.gd" id="1_k5koq"]
+[ext_resource type="TileSet" uid="uid://b3x77y7ht6aqa" path="res://assets/tiles/new_tile_set.tres" id="2_00nh7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mcmhg"]
+size = Vector2(49, 41)
+
+[node name="ChangeScene" type="Area2D"]
+script = ExtResource("1_k5koq")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(24, -21)
+shape = SubResource("RectangleShape2D_mcmhg")
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(3, 3)
+tile_set = ExtResource("2_00nh7")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65536, 327680, 7)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
