@@ -41,6 +41,7 @@ separation = Vector2i(1, 1)
 9:0/0 = 0
 9:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 9:0/0/physics_layer_0/angular_velocity = 0.0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:0/0 = 0
 10:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:0/0/physics_layer_0/angular_velocity = 0.0
@@ -211,9 +212,11 @@ separation = Vector2i(1, 1)
 4:5/0 = 0
 4:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:5/0/physics_layer_0/angular_velocity = 0.0
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:5/0 = 0
 5:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:5/0/physics_layer_0/angular_velocity = 0.0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:5/0 = 0
 6:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:5/0/physics_layer_0/angular_velocity = 0.0
@@ -247,12 +250,15 @@ separation = Vector2i(1, 1)
 4:6/0 = 0
 4:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:6/0/physics_layer_0/angular_velocity = 0.0
+4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:6/0 = 0
 5:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:6/0/physics_layer_0/angular_velocity = 0.0
+5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:6/0 = 0
 6:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:6/0/physics_layer_0/angular_velocity = 0.0
+6:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:6/0 = 0
 7:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:6/0/physics_layer_0/angular_velocity = 0.0
@@ -265,6 +271,7 @@ separation = Vector2i(1, 1)
 10:6/0 = 0
 10:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:6/0/physics_layer_0/angular_velocity = 0.0
+10:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:6/0 = 0
 11:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 11:6/0/physics_layer_0/angular_velocity = 0.0
@@ -422,13 +429,13 @@ sources/0 = SubResource("TileSetAtlasSource_5rdyv")
 size = Vector2(287.333, 143.667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvcht"]
-size = Vector2(15, 14)
+size = Vector2(15, 15.3333)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1h74"]
 size = Vector2(142.844, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2hqd"]
-size = Vector2(127.667, 16.6667)
+size = Vector2(129.5, 16.6667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibojp"]
 size = Vector2(14, 167.333)
@@ -449,13 +456,13 @@ position = Vector2(159.667, 88.5)
 shape = SubResource("RectangleShape2D_bfuga")
 
 [node name="DoorUp" parent="." instance=ExtResource("2_2pqnt")]
-position = Vector2(168.333, 9.66667)
+position = Vector2(168, 15)
 
 [node name="Marker2D" parent="DoorUp" index="0"]
-position = Vector2(-1.33335, -40.3333)
+position = Vector2(-1.33333, -50)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorUp"]
-position = Vector2(-0.333344, -0.666667)
+position = Vector2(-1.66666, -4.33333)
 shape = SubResource("RectangleShape2D_vvcht")
 
 [node name="DoorDown" parent="." instance=ExtResource("2_2pqnt")]
@@ -481,7 +488,7 @@ position = Vector2(84.9115, 168)
 shape = SubResource("RectangleShape2D_b1h74")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
-position = Vector2(242.333, 7.33333)
+position = Vector2(241.417, 7.33333)
 shape = SubResource("RectangleShape2D_u2hqd")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls"]

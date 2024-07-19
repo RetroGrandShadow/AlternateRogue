@@ -463,31 +463,31 @@ position = Vector2(159.667, 88.5)
 shape = SubResource("RectangleShape2D_bfuga")
 
 [node name="DoorUp" parent="." instance=ExtResource("4_fimao")]
-position = Vector2(264.667, 9.66667)
+position = Vector2(264.667, 12.3333)
 
 [node name="Marker2D" parent="DoorUp" index="0"]
-position = Vector2(-1.33335, -40.3333)
+position = Vector2(-1.33333, -44)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorUp"]
 position = Vector2(-0.333344, -0.666667)
 shape = SubResource("RectangleShape2D_vvcht")
 
 [node name="DoorUp2" parent="." instance=ExtResource("4_fimao")]
-position = Vector2(152, 9.66667)
+position = Vector2(152, 12.3333)
 
 [node name="Marker2D" parent="DoorUp2" index="0"]
-position = Vector2(-1.33335, -40.3333)
+position = Vector2(-1.33333, -44)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorUp2"]
 position = Vector2(-0.333344, -0.666667)
 shape = SubResource("RectangleShape2D_vvcht")
 
 [node name="DoorDown" parent="." instance=ExtResource("4_fimao")]
-position = Vector2(55.6667, 169)
+position = Vector2(55.6667, 163.667)
 rotation = 3.14159
 
 [node name="Marker2D" parent="DoorDown" index="0"]
-position = Vector2(-1.33335, -40.3333)
+position = Vector2(-0.666552, -46)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorDown"]
 position = Vector2(-0.333344, -0.666667)

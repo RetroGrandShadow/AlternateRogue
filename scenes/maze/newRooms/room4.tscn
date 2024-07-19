@@ -465,34 +465,33 @@ visible = false
 position = Vector2(159.667, 88.5)
 shape = SubResource("RectangleShape2D_bfuga")
 
+[node name="DoorUp2" parent="." instance=ExtResource("4_mvqlp")]
+position = Vector2(56.3334, 12.3333)
+
+[node name="Marker2D" parent="DoorUp2" index="0"]
+position = Vector2(-1.33336, -45.6667)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorUp2"]
+position = Vector2(-0.333344, -0.666667)
+shape = SubResource("RectangleShape2D_vvcht")
+
 [node name="DoorUp" parent="." instance=ExtResource("4_mvqlp")]
-position = Vector2(314, 57)
+position = Vector2(308.333, 57)
 rotation = 1.5708
 
 [node name="Marker2D" parent="DoorUp" index="0"]
-position = Vector2(-1.33335, -40.3333)
+position = Vector2(-1.33349, -45.6667)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorUp"]
 position = Vector2(-0.333344, -0.666667)
 shape = SubResource("RectangleShape2D_vvcht")
 
-[node name="DoorUp" parent="DoorUp" instance=ExtResource("4_mvqlp")]
-position = Vector2(-46.6657, 257.667)
-rotation = -1.5708
-
-[node name="Marker2D" parent="DoorUp/DoorUp" index="0"]
-position = Vector2(-1.33335, -40.3333)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorUp/DoorUp"]
-position = Vector2(-0.333344, -0.666667)
-shape = SubResource("RectangleShape2D_vvcht")
-
 [node name="DoorDown" parent="." instance=ExtResource("4_mvqlp")]
-position = Vector2(55.6667, 169)
+position = Vector2(55.6667, 164.667)
 rotation = 3.14159
 
 [node name="Marker2D" parent="DoorDown" index="0"]
-position = Vector2(-1.33335, -40.3333)
+position = Vector2(-1.33323, -42.6667)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorDown"]
 position = Vector2(-0.333344, -0.666667)
@@ -535,6 +534,6 @@ position = Vector2(158.333, 86.6667)
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 
+[editable path="DoorUp2"]
 [editable path="DoorUp"]
-[editable path="DoorUp/DoorUp"]
 [editable path="DoorDown"]

@@ -462,11 +462,11 @@ position = Vector2(159.667, 88.5)
 shape = SubResource("RectangleShape2D_bfuga")
 
 [node name="Door" parent="." instance=ExtResource("4_bu5tf")]
-position = Vector2(314, 151.667)
+position = Vector2(309.333, 151.667)
 rotation = 1.5708
 
 [node name="Marker2D" parent="Door" index="0"]
-position = Vector2(-1.33335, -40.3333)
+position = Vector2(-1.3335, -47.3333)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
 position = Vector2(-0.333344, -0.666667)

@@ -59,6 +59,8 @@ func update_animation(delta: float) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 		animated_sprite.animation = "idle"
 
+
+#nie widac strzału na innym pokoju niż pierwszym
 func shoot():
 	var bullet = bullet_scene.instantiate()
 	bullet.position = position
