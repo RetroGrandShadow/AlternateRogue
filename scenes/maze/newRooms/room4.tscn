@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://2t245wfyqn67"]
+[gd_scene load_steps=17 format=3 uid="uid://2t245wfyqn67"]
 
 [ext_resource type="Texture2D" uid="uid://k4lcu5byuyl" path="res://assets/kennny-tiny-dungeon/Tilemap/tilemap.png" id="1_dg8ct"]
 [ext_resource type="Script" path="res://scripts/dungeonroom.gd" id="2_owr5b"]
 [ext_resource type="PackedScene" uid="uid://bj3k21je1vg7c" path="res://scenes/maze/rooms/room4.tscn" id="3_44a0j"]
 [ext_resource type="PackedScene" uid="uid://be45on3og2vp4" path="res://scenes/door.tscn" id="4_mvqlp"]
+[ext_resource type="PackedScene" uid="uid://bxg1gmds1upa8" path="res://scenes/purple_goblin.tscn" id="5_frtru"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rdyv"]
 texture = ExtResource("1_dg8ct")
@@ -532,8 +533,40 @@ shape = SubResource("RectangleShape2D_d4um1")
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(158.333, 86.6667)
 
+[node name="Enemies" type="Node2D" parent="."]
+position = Vector2(0, -0.333333)
+scale = Vector2(0.333333, 0.333333)
+
+[node name="PurpleGoblin" parent="Enemies" instance=ExtResource("5_frtru")]
+position = Vector2(683, 272)
+
+[node name="Weapon" parent="Enemies/PurpleGoblin" index="4" node_paths=PackedStringArray("flippable_sprite")]
+flippable_sprite = NodePath("")
+
+[node name="PurpleGoblin2" parent="Enemies" instance=ExtResource("5_frtru")]
+position = Vector2(327, 108)
+
+[node name="Weapon" parent="Enemies/PurpleGoblin2" index="4" node_paths=PackedStringArray("flippable_sprite")]
+flippable_sprite = NodePath("")
+
+[node name="PurpleGoblin3" parent="Enemies" instance=ExtResource("5_frtru")]
+position = Vector2(125, 250)
+
+[node name="Weapon" parent="Enemies/PurpleGoblin3" index="4" node_paths=PackedStringArray("flippable_sprite")]
+flippable_sprite = NodePath("")
+
+[node name="PurpleGoblin4" parent="Enemies" instance=ExtResource("5_frtru")]
+position = Vector2(625.001, 397)
+
+[node name="Weapon" parent="Enemies/PurpleGoblin4" index="4" node_paths=PackedStringArray("flippable_sprite")]
+flippable_sprite = NodePath("")
+
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 
 [editable path="DoorUp2"]
 [editable path="DoorUp"]
 [editable path="DoorDown"]
+[editable path="Enemies/PurpleGoblin"]
+[editable path="Enemies/PurpleGoblin2"]
+[editable path="Enemies/PurpleGoblin3"]
+[editable path="Enemies/PurpleGoblin4"]
