@@ -10,12 +10,23 @@ var attack_damage = 1
 
 func _ready():
 	$AnimatedSprite2D.play("idle")
-	hit_timer.wait_time = 0.5
 
 func _process(delta):
+	print("Bullet _process called")
 	position += direction * speed * delta
+	print("Bullet position: ", global_position)
+	
+	var camera = get_viewport().get_camera_2d()
+	if camera:
+		var camera_position = camera.global_position
+		var camera_size = get_viewport().get_visible_rect().size
+		var visible_rect = Rect2(camera_position - camera_size / 2, camera_size)
 
-	if position.x < 0 or position.x > get_viewport_rect().size.x or position.y < 0 or position.y > get_viewport_rect().size.y:
+		# Only queue free if the bullet is out of the camera's visible rect
+		if not visible_rect.has_point(global_position):
+			queue_free()
+	else:
+		print("No camera found")
 		queue_free()
 
 func _on_Area2D_body_entered(body):
@@ -23,7 +34,9 @@ func _on_Area2D_body_entered(body):
 	if body is Enemy:
 		body._get_damage(attack_damage)
 	$AnimatedSprite2D.play("hit")
-	hit_timer.start()
+	print("starting timer")
+	hit_timer.start(0.5)
 
-func _on_Timer_timeout():
+func _on_timer_timeout():
+	print("bullet timeout")
 	queue_free()

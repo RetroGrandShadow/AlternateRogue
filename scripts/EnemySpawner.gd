@@ -13,11 +13,8 @@ var enemies_spawned: int = 0
 var current_spawn_interval: float
 var player: Node2D
 
-func _ready():
-	spawn_timer.connect("timeout", Callable(self, "_on_SpawnTimer_timeout"))
-
-func start_spawning(player: Node2D):
-	self.player = player
+func start_spawning(player_node: Node2D):
+	self.player = player_node
 	current_spawn_interval = initial_spawn_interval
 	enemies_spawned = 0
 	spawn_timer.start(current_spawn_interval)
@@ -37,11 +34,14 @@ func _on_SpawnTimer_timeout():
 		enemies_spawned = 0
 
 func spawn_enemy():
-	var enemy = enemy_scene.instance()
+	if enemy_scene == null:
+		print("Error: enemy_scene is null")
+		return
+	var enemy = enemy_scene.instantiate()
 	var spawn_position = get_random_position()
 	enemy.position = spawn_position
 	add_child(enemy)
-	enemy.connect("died", Callable(self, "_on_Enemy_died")) # Assume enemy emits "died" signal when killed
+	enemy.connect("died", Callable(self, "_on_Enemy_died"))
 
 func get_random_position() -> Vector2:
 	var position = player.position

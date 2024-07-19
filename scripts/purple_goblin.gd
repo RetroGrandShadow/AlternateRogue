@@ -19,9 +19,7 @@ func _get_damage(attack_damage: int) -> void:
 		queue_free()
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
-	print("goblin got hit by something")
 	if body is Bullet:
-		print("it was a bullet")
 		_get_damage(body.attack_damage)
 
 func _physics_process(delta) -> void:

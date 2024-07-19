@@ -21,27 +21,34 @@ func _ready() -> void:
 	# Set player at the center of the screen
 	screen_size = get_viewport_rect().size
 	position = screen_size / 2
-	
 
 func _get_damage(attack_damage: int) -> void:
 	current_health -= attack_damage
-
+	teleport_to_marker()
+	health_changed.emit(current_health)
+	if current_health <= 0 and not did_died:
+		die()
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body is Enemy:
 		_get_damage(1)
-		health_changed.emit(current_health)
-		# if not in dungeon already, teleport to marker
 
-		
-		
 func die() -> void:
+	did_died = true
 	animated_sprite.play("die")
 	if !animated_sprite.animation_finished:
 		animated_sprite.stop()
 
+func teleport_to_marker() -> void:
+	var marker = get_node("/root/World/DungeonRoom3/Marker2D")
+	if marker:
+		global_position = marker.global_position
+	else:
+		print("Error: Marker2D not found!")
+
+
 func update_animation(delta) -> void:
-	# keybord input
+	# keyboard input
 	input_dir = Input.get_vector("left", "right", "up", "down")
 
 	# Movement and animation
@@ -62,8 +69,11 @@ func update_animation(delta) -> void:
 func shoot():
 	var bullet = bullet_scene.instantiate()
 	bullet.position = position
+	get_tree().current_scene.add_child(bullet)
 	bullet.direction = input_dir.normalized()
-	get_parent().add_child(bullet)
+	print("Bullet instantiated at position: ", bullet.position)
+	print("Bullet parent: ", bullet.get_parent())
+	print("Bullet direction is: ", bullet.direction)
 
 
 func _physics_process(delta) -> void:
