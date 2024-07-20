@@ -10,7 +10,6 @@ var player_position: Vector2
 var target_position: Vector2
 
 
-@onready var player = null
 @onready var tilemap = get_parent().get_parent()
 
 @onready var player: Node2D = null
@@ -31,6 +30,17 @@ func _ready():
 		print("Error: Player node not found")
 	else:
 		print("Player node found")
+	Events.room_entered.connect(func(room):
+		if room == tilemap:
+			activated = true
+		else:
+			activated = false
+	)
+	
+	Events.room_exited.connect(func(room):
+		if room == tilemap:
+			activated = false
+	)
 
 func _get_damage(attack_damage: int) -> void:
 	current_health -= attack_damage
@@ -80,25 +90,6 @@ func active_enemy(delta) -> void:
 				animation.play("attack_up")
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, ACCELERATION * delta)
-
-func _ready():
-	player = find_player()
-	if player == null:
-		print("Player node not found within 10 levels.")
-	else:
-		print("Player node found: ", player)
-	
-	Events.room_entered.connect(func(room):
-		if room == tilemap:
-			activated = true
-		else:
-			activated = false
-	)
-	
-	Events.room_exited.connect(func(room):
-		if room == tilemap:
-			activated = false
-	)
 
 func find_player() -> Node:
 	var current_node = self

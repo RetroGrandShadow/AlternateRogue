@@ -15,6 +15,8 @@ var bullet_scene = preload("res://scenes/AnimatedBullet.tscn")
 @export var max_health: int = 3
 @onready var current_health: int = max_health
 
+
+
 var did_died: bool = false
 
 func _ready() -> void:
