@@ -79,6 +79,13 @@ func die() -> void:
 	animated_sprite.play("die")
 	if !animated_sprite.animation_finished:
 		animated_sprite.stop()
+	
+	var end_screen_scene = preload("res://scenes/maze/Dead.tscn")
+	if end_screen_scene:
+		var end_screen = end_screen_scene.instantiate()
+		get_tree().current_scene.add_child(end_screen)
+	else:
+		print("Error: Could not load EndScreen.tscn")
 
 func teleport_to_marker() -> void:
 	var marker = get_node("/root/World/DungeonRoom3/Marker2D")
