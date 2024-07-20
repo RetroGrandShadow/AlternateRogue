@@ -2,17 +2,18 @@ extends CharacterBody2D
 
 class_name Enemy
 
+signal died  # Signal to be emitted when the enemy dies
+
 const SPEED = 100.0
 const ACCELERATION = 80.0
 var player_position: Vector2
 var target_position: Vector2
 
 
-@onready var player = null
 @onready var tilemap = get_parent().get_parent()
 
+@onready var player: Node2D = null
 @onready var current_health: int = 2
-
 @onready var animation = $AnimationPlayer
 @onready var sprite = $FlippableSprite
 @onready var weapon = $Weapon
@@ -23,16 +24,33 @@ var flipped = false
 
 var activated: bool = false
 
+func _ready():
+	player = get_node("/root/World/Player")
+	if player == null:
+		print("Error: Player node not found")
+	else:
+		print("Player node found")
+	Events.room_entered.connect(func(room):
+		if room == tilemap:
+			activated = true
+		else:
+			activated = false
+	)
+	
+	Events.room_exited.connect(func(room):
+		if room == tilemap:
+			activated = false
+	)
+
 func _get_damage(attack_damage: int) -> void:
 	current_health -= attack_damage
 	if current_health <= 0:
+		emit_signal("died")
 		queue_free()
 		_check_door()
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
-	print("goblin got hit by something")
 	if body is Bullet:
-		print("it was a bullet")
 		_get_damage(body.attack_damage)
 		
 func _check_door() -> void:
@@ -73,25 +91,6 @@ func active_enemy(delta) -> void:
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, ACCELERATION * delta)
 
-func _ready():
-	player = find_player()
-	if player == null:
-		print("Player node not found within 10 levels.")
-	else:
-		print("Player node found: ", player)
-	
-	Events.room_entered.connect(func(room):
-		if room == tilemap:
-			activated = true
-		else:
-			activated = false
-	)
-	
-	Events.room_exited.connect(func(room):
-		if room == tilemap:
-			activated = false
-	)
-
 func find_player() -> Node:
 	var current_node = self
 	for i in range(10):
@@ -108,3 +107,6 @@ func _physics_process(delta) -> void:
 	else:
 		animation.play("idle")
 
+
+func _on_Enemy_died():
+	pass # Replace with function body.

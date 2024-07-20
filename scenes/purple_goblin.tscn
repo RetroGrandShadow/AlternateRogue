@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxg1gmds1upa8"]
+[gd_scene load_steps=14 format=3 uid="uid://cud8dlk11j1i"]
 
 [ext_resource type="Script" path="res://scripts/purple_goblin.gd" id="1_dfwx7"]
 [ext_resource type="Texture2D" uid="uid://b0syrk810vtls" path="res://assets/Tiny Swords (Update 010)/Factions/Goblins/Troops/Torch/Purple/Torch_Purple.png" id="1_mxvnk"]

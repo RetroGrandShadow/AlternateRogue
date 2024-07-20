@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bht8bjtp8lbtu" path="res://scenes/player.tscn" id="1_nq2cp"]
 [ext_resource type="PackedScene" uid="uid://cckkqhjp7huud" path="res://scenes/dungeonroom.tscn" id="2_qxjmj"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="3_q0w4n"]
-[ext_resource type="PackedScene" uid="uid://bxg1gmds1upa8" path="res://scenes/purple_goblin.tscn" id="4_sx25o"]
+[ext_resource type="PackedScene" uid="uid://cud8dlk11j1i" path="res://scenes/purple_goblin.tscn" id="4_sx25o"]
 [ext_resource type="PackedScene" uid="uid://ddryb35b7nudj" path="res://scenes/hearth_container.tscn" id="5_b2rs6"]
 [ext_resource type="PackedScene" uid="uid://6fldiatqmhty" path="res://scenes/dungeonroom2.tscn" id="5_ujkoc"]
 
