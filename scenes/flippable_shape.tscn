@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://pk4y1fk0k8s2"]
+
+[ext_resource type="Script" path="res://scripts/flippable_shape.gd" id="1_hpcln"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v56pf"]
+radius = 15.2941
+height = 84.7059
+
+[node name="FlippableShape" type="CollisionShape2D"]
+shape = SubResource("CapsuleShape2D_v56pf")
+script = ExtResource("1_hpcln")

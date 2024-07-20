@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://bs15vyigm747p"]
+
+[ext_resource type="PackedScene" uid="uid://xlgy5nby8xcb" path="res://scenes/maze/newRooms/room20.tscn" id="1_lvcg8"]
+[ext_resource type="PackedScene" uid="uid://cuavi6hlokbll" path="res://scenes/maze/newRooms/room13.tscn" id="2_mrywt"]
+[ext_resource type="PackedScene" uid="uid://dastcpl3uhhks" path="res://scenes/maze/newRooms/room16.tscn" id="3_lummh"]
+[ext_resource type="PackedScene" uid="uid://c61d53pg7hetx" path="res://scenes/maze/newRooms/room14.tscn" id="4_8yhsi"]
+[ext_resource type="PackedScene" uid="uid://brqq32mwx3nfc" path="res://scenes/maze/newRooms/room17.tscn" id="5_wchsa"]
+[ext_resource type="PackedScene" uid="uid://cscrfi3nh844d" path="res://scenes/maze/newRooms/room8.tscn" id="6_8dvul"]
+[ext_resource type="PackedScene" uid="uid://2t245wfyqn67" path="res://scenes/maze/newRooms/room4.tscn" id="7_d64h6"]
+[ext_resource type="PackedScene" uid="uid://02c3rivps38e" path="res://scenes/maze/newRooms/room19.tscn" id="8_g1ib4"]
+
+[node name="Floor1" type="Node"]
+
+[node name="NewRoom8" parent="." instance=ExtResource("1_lvcg8")]
+position = Vector2(-40, 0)
+
+[node name="NewRoom" parent="." instance=ExtResource("2_mrywt")]
+position = Vector2(296, -538)
+
+[node name="NewRoom2" parent="." instance=ExtResource("3_lummh")]
+position = Vector2(775, -1066)
+
+[node name="NewRoom3" parent="." instance=ExtResource("4_8yhsi")]
+position = Vector2(1303, -540)
+
+[node name="NewRoom4" parent="." instance=ExtResource("5_wchsa")]
+position = Vector2(2503, -1213)
+
+[node name="NewRoom5" parent="." instance=ExtResource("6_8dvul")]
+position = Vector2(2311, -1740)
+
+[node name="NewRoom6" parent="." instance=ExtResource("7_d64h6")]
+position = Vector2(1351, -1596)
+
+[node name="NewRoom7" parent="." instance=ExtResource("8_g1ib4")]
+position = Vector2(871, -2121)

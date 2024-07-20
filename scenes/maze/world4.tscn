@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bv5p3bjcyysm1"]
+
+[ext_resource type="PackedScene" uid="uid://bht8bjtp8lbtu" path="res://scenes/player.tscn" id="1_7xi8k"]
+[ext_resource type="Script" path="res://scripts/Camera2D.gd" id="2_elu8l"]
+[ext_resource type="PackedScene" uid="uid://c24d1nkv7fmlv" path="res://scenes/maze/floors/floor3.tscn" id="3_d5vs7"]
+[ext_resource type="PackedScene" uid="uid://jwess2ts2ur1" path="res://scenes/maze/changeScene.tscn" id="5_231e3"]
+
+[node name="World" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_7xi8k")]
+z_index = 9
+position = Vector2(377, 280)
+scale = Vector2(3, 3)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(482, 259)
+scale = Vector2(3, 3)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("2_elu8l")
+
+[node name="Floor4" parent="." instance=ExtResource("3_d5vs7")]
+
+[node name="ChangeScene" parent="." instance=ExtResource("5_231e3")]
+position = Vector2(2948, 2303)
+target_world = 2

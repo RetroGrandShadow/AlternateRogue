@@ -63,6 +63,15 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body is Enemy:
 		_get_damage(1)
 
+		
+func _on_hit_box_area_entered(area: Area2D) -> void:
+	if area.name == "Weapon":
+		if current_health > 0:
+			_get_damage(area.get_parent().attack_damage)
+			health_changed.emit(current_health)
+	
+
+		
 func die() -> void:
 	did_died = true
 	animated_sprite.play("die")
@@ -77,7 +86,7 @@ func teleport_to_marker() -> void:
 		print("Error: Marker2D not found!")
 
 
-func update_animation(delta) -> void:
+func update_animation(delta: float) -> void:
 	# keyboard input
 	input_dir = Input.get_vector("left", "right", "up", "down")
 
@@ -96,6 +105,8 @@ func update_animation(delta) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 		animated_sprite.animation = "idle"
 
+
+#nie widac strzału na innym pokoju niż pierwszym
 func shoot():
 	var bullet = bullet_scene.instantiate()
 	bullet.position = position
@@ -103,7 +114,7 @@ func shoot():
 	bullet.direction = input_dir.normalized()
 
 
-func _physics_process(delta) -> void:
+func _physics_process(delta: float) -> void:
 	if current_health > 0:
 		update_animation(delta)
 		move_and_slide()
@@ -116,7 +127,10 @@ func _physics_process(delta) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 
-func _on_animated_sprite_2d_animation_looped():
+func _on_animated_sprite_2d_animation_looped() -> void:
 	if did_died:
 		animated_sprite.frame = 9
 		animated_sprite.pause()
+
+
+

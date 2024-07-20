@@ -18,6 +18,13 @@ scale = Vector2(3, 3)
 
 [node name="DungeonRoom" parent="." instance=ExtResource("2_qxjmj")]
 
+[node name="Enemies" type="Node2D" parent="DungeonRoom"]
+position = Vector2(0, -0.333333)
+scale = Vector2(0.333333, 0.333333)
+
+[node name="PurpleGoblin" parent="DungeonRoom/Enemies" instance=ExtResource("4_sx25o")]
+position = Vector2(683, 272)
+
 [node name="DungeonRoom2" parent="." instance=ExtResource("2_qxjmj")]
 position = Vector2(0, -527)
 
@@ -28,11 +35,6 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = ExtResource("3_q0w4n")
 
-[node name="Enemies" type="Node2D" parent="."]
-
-[node name="PurpleGoblin" parent="Enemies" instance=ExtResource("4_sx25o")]
-position = Vector2(683, 272)
-
 [node name="DungeonRoom3" parent="." instance=ExtResource("5_ujkoc")]
 position = Vector2(18, -1622)
 
@@ -40,6 +42,6 @@ position = Vector2(18, -1622)
 
 [node name="HearthContainer" parent="CanvasLayer" instance=ExtResource("5_b2rs6")]
 
-[connection signal="body_entered" from="Enemies/PurpleGoblin/HitBox" to="Player" method="_on_hit_box_body_entered"]
+[connection signal="body_entered" from="DungeonRoom/Enemies/PurpleGoblin/HitBox" to="Player" method="_on_hit_box_body_entered"]
 
-[editable path="Enemies/PurpleGoblin"]
+[editable path="DungeonRoom/Enemies/PurpleGoblin"]
