@@ -1,10 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cud8dlk11j1i"]
+[gd_scene load_steps=14 format=3 uid="uid://d0wvpn7hy21ib"]
 
-[ext_resource type="Script" path="res://scripts/purple_goblin.gd" id="1_dfwx7"]
-[ext_resource type="Texture2D" uid="uid://b0syrk810vtls" path="res://assets/Tiny Swords (Update 010)/Factions/Goblins/Troops/Torch/Purple/Torch_Purple.png" id="1_mxvnk"]
-[ext_resource type="PackedScene" uid="uid://cad2t26wtffdr" path="res://scenes/flippable_sprite.tscn" id="2_t3n8n"]
-[ext_resource type="PackedScene" uid="uid://xxcqotnlly3f" path="res://scenes/weapon.tscn" id="3_cw13n"]
-[ext_resource type="PackedScene" uid="uid://pk4y1fk0k8s2" path="res://scenes/flippable_shape.tscn" id="5_r6jhv"]
+[ext_resource type="Script" path="res://scripts/purple_goblin.gd" id="1_meqs4"]
+[ext_resource type="PackedScene" uid="uid://cad2t26wtffdr" path="res://scenes/flippable_sprite.tscn" id="2_onvct"]
+[ext_resource type="Texture2D" uid="uid://cqp012aoxvkyc" path="res://assets/Tiny Swords (Update 010)/Factions/Goblins/Troops/Torch/Yellow/Torch_Yellow.png" id="3_24i44"]
+[ext_resource type="PackedScene" uid="uid://xxcqotnlly3f" path="res://scenes/weapon.tscn" id="4_n4lmn"]
+[ext_resource type="PackedScene" uid="uid://pk4y1fk0k8s2" path="res://scenes/flippable_shape.tscn" id="5_sr5pc"]
 
 [sub_resource type="Animation" id="Animation_3ubv3"]
 length = 0.001
@@ -325,18 +325,18 @@ radius = 17.6471
 height = 58.8235
 
 [node name="PurpleGoblin" type="CharacterBody2D"]
-scale = Vector2(0.85, 0.85)
 collision_layer = 2
 collision_mask = 15
-script = ExtResource("1_dfwx7")
+script = ExtResource("1_meqs4")
+is_boss = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(1.5, 1)
 scale = Vector2(1.35, 1)
 polygon = PackedVector2Array(9.25926, 0, -1.11111, -17, -13.7037, 0, -1.85185, 32)
 
-[node name="FlippableSprite" parent="." instance=ExtResource("2_t3n8n")]
-texture = ExtResource("1_mxvnk")
+[node name="FlippableSprite" parent="." instance=ExtResource("2_onvct")]
+texture = ExtResource("3_24i44")
 hframes = 7
 vframes = 5
 
@@ -354,10 +354,10 @@ collision_mask = 9
 position = Vector2(2.35294, 3.52941)
 shape = SubResource("CapsuleShape2D_fqgse")
 
-[node name="Weapon" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("3_cw13n")]
+[node name="Weapon" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("4_n4lmn")]
 flippable_sprite = NodePath("../FlippableSprite")
 
-[node name="FlippableShape" parent="Weapon" instance=ExtResource("5_r6jhv")]
+[node name="FlippableShape" parent="Weapon" instance=ExtResource("5_sr5pc")]
 position = Vector2(-41.1765, -41.1765)
 rotation = 1.5708
 disabled = true

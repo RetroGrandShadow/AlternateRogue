@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://02c3rivps38e"]
+[gd_scene load_steps=20 format=3 uid="uid://02c3rivps38e"]
 
 [ext_resource type="Texture2D" uid="uid://k4lcu5byuyl" path="res://assets/kennny-tiny-dungeon/Tilemap/tilemap.png" id="1_gbwtp"]
 [ext_resource type="Script" path="res://scripts/dungeonroom.gd" id="2_ab5ah"]
 [ext_resource type="PackedScene" uid="uid://co6xi7t2kg1j" path="res://scenes/maze/rooms/room5.tscn" id="3_0oefc"]
 [ext_resource type="PackedScene" uid="uid://be45on3og2vp4" path="res://scenes/door.tscn" id="4_cb525"]
-[ext_resource type="PackedScene" uid="uid://bxg1gmds1upa8" path="res://scenes/purple_goblin.tscn" id="5_hiqfq"]
+[ext_resource type="PackedScene" uid="uid://d0wvpn7hy21ib" path="res://scenes/boss_goblin.tscn" id="5_gqu52"]
+[ext_resource type="PackedScene" uid="uid://jwess2ts2ur1" path="res://scenes/maze/changeScene.tscn" id="6_u7i0h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rdyv"]
 texture = ExtResource("1_gbwtp")
@@ -458,6 +459,7 @@ scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_klj1v")
 format = 2
 script = ExtResource("2_ab5ah")
+is_last_room = true
 
 [node name="Room1" parent="." instance=ExtResource("3_0oefc")]
 position = Vector2(0, 16)
@@ -530,34 +532,22 @@ position = Vector2(158.333, 86.6667)
 position = Vector2(0, -0.333333)
 scale = Vector2(0.333333, 0.333333)
 
-[node name="PurpleGoblin" parent="Enemies" instance=ExtResource("5_hiqfq")]
-position = Vector2(683, 272)
+[node name="PurpleGoblin5" parent="Enemies" instance=ExtResource("5_gqu52")]
+position = Vector2(208, 389)
+scale = Vector2(0.85, 0.85)
 
-[node name="Weapon" parent="Enemies/PurpleGoblin" index="4" node_paths=PackedStringArray("flippable_sprite")]
-flippable_sprite = NodePath("")
+[node name="PurpleGoblin6" parent="Enemies" instance=ExtResource("5_gqu52")]
+position = Vector2(442, 127)
+scale = Vector2(0.85, 0.85)
 
-[node name="PurpleGoblin2" parent="Enemies" instance=ExtResource("5_hiqfq")]
-position = Vector2(327, 108)
+[node name="PurpleGoblin7" parent="Enemies" instance=ExtResource("5_gqu52")]
+position = Vector2(831.001, 308)
+scale = Vector2(0.85, 0.85)
 
-[node name="Weapon" parent="Enemies/PurpleGoblin2" index="4" node_paths=PackedStringArray("flippable_sprite")]
-flippable_sprite = NodePath("")
-
-[node name="PurpleGoblin3" parent="Enemies" instance=ExtResource("5_hiqfq")]
-position = Vector2(216, 382)
-
-[node name="Weapon" parent="Enemies/PurpleGoblin3" index="4" node_paths=PackedStringArray("flippable_sprite")]
-flippable_sprite = NodePath("")
-
-[node name="PurpleGoblin4" parent="Enemies" instance=ExtResource("5_hiqfq")]
-position = Vector2(427, 408)
-
-[node name="Weapon" parent="Enemies/PurpleGoblin4" index="4" node_paths=PackedStringArray("flippable_sprite")]
-flippable_sprite = NodePath("")
+[node name="ChangeScene" parent="." instance=ExtResource("6_u7i0h")]
+position = Vector2(69.3333, 30)
+target_world = 1
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 
 [editable path="DoorDown"]
-[editable path="Enemies/PurpleGoblin"]
-[editable path="Enemies/PurpleGoblin2"]
-[editable path="Enemies/PurpleGoblin3"]
-[editable path="Enemies/PurpleGoblin4"]

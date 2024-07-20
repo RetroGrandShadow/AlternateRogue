@@ -4,8 +4,8 @@ class_name Enemy
 
 signal died  # Signal to be emitted when the enemy dies
 
-const SPEED = 100.0
-const ACCELERATION = 80.0
+var SPEED = 100.0
+var ACCELERATION = 80.0
 var player_position: Vector2
 var target_position: Vector2
 
@@ -18,6 +18,9 @@ var target_position: Vector2
 @onready var sprite = $FlippableSprite
 @onready var weapon = $Weapon
 
+@export var is_boss = false
+
+
 var attack_damage: int = 1
 
 var flipped = false
@@ -25,6 +28,7 @@ var flipped = false
 var activated: bool = false
 
 func _ready():
+	if is_boss : set_boss() 
 	player = get_node("/root/World/Player")
 	if player == null:
 		print("Error: Player node not found")
@@ -110,3 +114,20 @@ func _physics_process(delta) -> void:
 
 func _on_Enemy_died():
 	pass # Replace with function body.
+	
+
+func _check_new_level() -> void:
+	var parent_room = get_parent()
+	while parent_room and not parent_room.has_method("check_goblins"):
+		parent_room = parent_room.get_parent()
+	
+	if parent_room:
+		parent_room.remove_goblin(self)
+		parent_room.check_goblins()
+
+func set_boss() -> void:
+	var bonus = 1.5
+	current_health = 3
+	
+	SPEED = SPEED * bonus
+	ACCELERATION = ACCELERATION * bonus

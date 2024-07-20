@@ -2,22 +2,36 @@ extends Area2D
 
 
 enum World {
-	WORLD_3,
-	WORLD_4,
+	Floor_2,
+	Floor_3,
 	WON_GAME
 }
 
-# Exported variable to select the target world in the editor
-@export var target_world: World = World.WORLD_3
+@export var target_world: World = World.Floor_2
+
+var is_to_teleport = false
 
 func _on_body_entered(body):
-	match target_world:
-		World.WORLD_3:
-			get_tree().change_scene_to_file("res://scenes/maze/world3.tscn")
-		World.WORLD_4:
-			get_tree().change_scene_to_file("res://scenes/maze/world4.tscn")
-		World.WON_GAME:
-			get_tree().change_scene_to_file("res://scenes/maze/gameOver.tscn")
+	if is_to_teleport:
+		teleport_to_marker(body)
 
 func _on_body_exited(body):
 	pass # Replace with function body.
+	
+func update_is_to_teleport() -> void:
+	is_to_teleport = true
+
+func teleport_to_marker(body) -> void:
+	print("teleport to next level")
+	var marker = null
+	match target_world:
+		World.Floor_2:
+			marker = get_node("/root/World/Floor2/Marker2D")
+		World.Floor_3:
+			marker = get_node("/root/World/Floor3/Marker2D")
+		World.WON_GAME:
+			get_tree().change_scene_to_file("res://scenes/maze/gameOver.tscn")
+	if marker!=null:
+		body.global_position = marker.global_position
+	else:
+		print("Error: Marker2D not found!")

@@ -1,13 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://c61d53pg7hetx"]
+[gd_scene load_steps=15 format=3 uid="uid://gpgmwfkfus6s"]
 
-[ext_resource type="Texture2D" uid="uid://k4lcu5byuyl" path="res://assets/kennny-tiny-dungeon/Tilemap/tilemap.png" id="1_fptxp"]
-[ext_resource type="Script" path="res://scripts/dungeonroom.gd" id="2_08mj5"]
-[ext_resource type="PackedScene" uid="uid://c8tw73hxoh3db" path="res://scenes/maze/rooms/room14.tscn" id="3_450px"]
-[ext_resource type="PackedScene" uid="uid://be45on3og2vp4" path="res://scenes/door.tscn" id="4_7tvxr"]
-[ext_resource type="PackedScene" uid="uid://cud8dlk11j1i" path="res://scenes/purple_goblin.tscn" id="5_i82hp"]
+[ext_resource type="Texture2D" uid="uid://k4lcu5byuyl" path="res://assets/kennny-tiny-dungeon/Tilemap/tilemap.png" id="1_0xc0r"]
+[ext_resource type="Script" path="res://scripts/dungeonroom.gd" id="2_887pd"]
+[ext_resource type="PackedScene" uid="uid://c8tw73hxoh3db" path="res://scenes/maze/rooms/room14.tscn" id="3_0we3r"]
+[ext_resource type="PackedScene" uid="uid://be45on3og2vp4" path="res://scenes/door.tscn" id="4_mkljp"]
+[ext_resource type="PackedScene" uid="uid://d0wvpn7hy21ib" path="res://scenes/boss_goblin.tscn" id="5_gogrp"]
+[ext_resource type="PackedScene" uid="uid://jwess2ts2ur1" path="res://scenes/maze/changeScene.tscn" id="6_1iq5y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rdyv"]
-texture = ExtResource("1_fptxp")
+texture = ExtResource("1_0xc0r")
 separation = Vector2i(1, 1)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -442,9 +443,10 @@ position = Vector2(0, 1)
 scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_klj1v")
 format = 2
-script = ExtResource("2_08mj5")
+script = ExtResource("2_887pd")
+is_last_room = true
 
-[node name="Room1" parent="." instance=ExtResource("3_450px")]
+[node name="Room1" parent="." instance=ExtResource("3_0we3r")]
 position = Vector2(0, 16)
 scale = Vector2(1, 1)
 
@@ -455,7 +457,7 @@ collision_layer = 0
 position = Vector2(159.667, 88.5)
 shape = SubResource("RectangleShape2D_bfuga")
 
-[node name="DoorUp" parent="." instance=ExtResource("4_7tvxr")]
+[node name="DoorUp" parent="." instance=ExtResource("4_mkljp")]
 position = Vector2(56, 12.3333)
 
 [node name="Marker2D" parent="DoorUp" index="0"]
@@ -496,22 +498,22 @@ position = Vector2(158.333, 86.6667)
 position = Vector2(0, -0.333333)
 scale = Vector2(0.333333, 0.333333)
 
-[node name="PurpleGoblin" parent="Enemies" instance=ExtResource("5_i82hp")]
-position = Vector2(683, 272)
+[node name="PurpleGoblin5" parent="Enemies" instance=ExtResource("5_gogrp")]
+position = Vector2(224, 310)
+scale = Vector2(0.85, 0.85)
 
-[node name="PurpleGoblin2" parent="Enemies" instance=ExtResource("5_i82hp")]
-position = Vector2(327, 108)
+[node name="PurpleGoblin6" parent="Enemies" instance=ExtResource("5_gogrp")]
+position = Vector2(703.001, 114)
+scale = Vector2(0.85, 0.85)
 
-[node name="PurpleGoblin3" parent="Enemies" instance=ExtResource("5_i82hp")]
-position = Vector2(216, 382)
+[node name="PurpleGoblin7" parent="Enemies" instance=ExtResource("5_gogrp")]
+position = Vector2(578.001, 345)
+scale = Vector2(0.85, 0.85)
 
-[node name="PurpleGoblin4" parent="Enemies" instance=ExtResource("5_i82hp")]
-position = Vector2(625.001, 397)
+[node name="ChangeScene" parent="." instance=ExtResource("6_1iq5y")]
+position = Vector2(288.333, 152.333)
+target_world = 2
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 
 [editable path="DoorUp"]
-[editable path="Enemies/PurpleGoblin"]
-[editable path="Enemies/PurpleGoblin2"]
-[editable path="Enemies/PurpleGoblin3"]
-[editable path="Enemies/PurpleGoblin4"]

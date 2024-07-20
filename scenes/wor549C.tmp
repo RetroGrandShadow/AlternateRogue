@@ -16,7 +16,7 @@ script = ExtResource("1_asp4o")
 
 [node name="Player" parent="." instance=ExtResource("1_nq2cp")]
 z_index = 9
-position = Vector2(460, 213)
+position = Vector2(377, 280)
 scale = Vector2(3, 3)
 
 [node name="DungeonRoom" parent="." instance=ExtResource("2_qxjmj")]
@@ -33,7 +33,7 @@ position = Vector2(683, 272)
 position = Vector2(-7886, -2820)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(454, 262)
+position = Vector2(482, 259)
 scale = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
@@ -47,7 +47,6 @@ position = Vector2(-8309, -7324)
 [node name="HearthContainer" parent="CanvasLayer" instance=ExtResource("5_b2rs6")]
 
 [node name="Floor1" parent="." instance=ExtResource("8_1xbqs")]
-position = Vector2(-44, 44)
 
 [node name="Floor2" parent="." instance=ExtResource("9_pmwew")]
 position = Vector2(-4688, 214)
