@@ -18,6 +18,9 @@ var target_position: Vector2
 @onready var sprite = $FlippableSprite
 @onready var weapon = $Weapon
 
+@onready var hurt_audio = $hurt
+@onready var die_audio = $die
+
 @export var is_boss = false
 
 
@@ -49,9 +52,13 @@ func _ready():
 func _get_damage(attack_damage: int) -> void:
 	current_health -= attack_damage
 	if current_health <= 0:
+		die_audio.play()
+		await get_tree().create_timer(0.5).timeout
 		emit_signal("died")
 		queue_free()
 		_check_door()
+	else:
+		hurt_audio.play()
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body is Bullet:
@@ -126,7 +133,7 @@ func _check_new_level() -> void:
 		parent_room.check_goblins()
 
 func set_boss() -> void:
-	var bonus = 1.5
+	var bonus = 1.3
 	current_health = 3
 	
 	SPEED = SPEED * bonus

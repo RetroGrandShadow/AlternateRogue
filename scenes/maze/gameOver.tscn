@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bf25m8xp23p13"]
+[gd_scene load_steps=5 format=3 uid="uid://bf25m8xp23p13"]
 
 [ext_resource type="Script" path="res://scripts/gameOver.gd" id="1_r7tgp"]
 [ext_resource type="SystemFont" uid="uid://j1ruo7hbisjw" path="res://assets/fonts/new_system_font.tres" id="2_px6rk"]
 [ext_resource type="TileSet" uid="uid://b3x77y7ht6aqa" path="res://assets/tiles/new_tile_set.tres" id="3_20rx3"]
+[ext_resource type="AudioStream" uid="uid://cgsev7pulp1w" path="res://assets/audio/win/tada-fanfare-a-6313.mp3" id="4_5wewd"]
 
 [node name="GameOver" type="CanvasLayer"]
 script = ExtResource("1_r7tgp")
@@ -90,6 +91,9 @@ scale = Vector2(2.965, 2.965)
 tile_set = ExtResource("3_20rx3")
 format = 2
 layer_0/tile_data = PackedInt32Array(655373, 0, 0, 655374, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 655376, 0, 0, 655375, 0, 0, 655377, 0, 0, 655378, 0, 0, 589842, 0, 0, 524306, 0, 0, 524305, 0, 0, 589841, 0, 0, 524303, 0, 0, 524304, 0, 0, 458768, 0, 0, 458769, 0, 0, 393233, 0, 0, 458770, 0, 0, 393234, 0, 0, 327698, 0, 0, 655372, 393216, 6, 655371, 327680, 6, 655370, 327680, 6, 655369, 327680, 6, 655368, 327680, 6, 655367, 327680, 6, 655360, 65536, 4, 655361, 65536, 4, 655362, 65536, 4, 655363, 65536, 4, 655364, 65536, 4, 589827, 65536, 4, 589826, 65536, 4, 589825, 65536, 4, 524289, 65536, 4, 524290, 65536, 4, 458753, 65536, 4, 393216, 65536, 4, 458752, 65536, 4, 589824, 65536, 4, 524288, 65536, 4, 655366, 262144, 6, 655365, 65536, 4, 589828, 65536, 4, 524291, 65536, 4, 458754, 65536, 4, 393217, 65536, 4, 327680, 65536, 4)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_5wewd")
 
 [connection signal="pressed" from="StartAgain" to="." method="_on_start_again_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://c61d53pg7hetx"]
+[gd_scene load_steps=15 format=3 uid="uid://c61d53pg7hetx"]
 
 [ext_resource type="Texture2D" uid="uid://k4lcu5byuyl" path="res://assets/kennny-tiny-dungeon/Tilemap/tilemap.png" id="1_fptxp"]
 [ext_resource type="Script" path="res://scripts/dungeonroom.gd" id="2_08mj5"]
 [ext_resource type="PackedScene" uid="uid://c8tw73hxoh3db" path="res://scenes/maze/rooms/room14.tscn" id="3_450px"]
 [ext_resource type="PackedScene" uid="uid://be45on3og2vp4" path="res://scenes/door.tscn" id="4_7tvxr"]
 [ext_resource type="PackedScene" uid="uid://cud8dlk11j1i" path="res://scenes/purple_goblin.tscn" id="5_i82hp"]
+[ext_resource type="AudioStream" uid="uid://bf65vpale3htj" path="res://assets/audio/doorOpen/success-48018.mp3" id="6_55l1u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rdyv"]
 texture = ExtResource("1_fptxp")
@@ -507,6 +508,9 @@ position = Vector2(216, 382)
 
 [node name="PurpleGoblin4" parent="Enemies" instance=ExtResource("5_i82hp")]
 position = Vector2(625.001, 397)
+
+[node name="newRoom" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_55l1u")
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 

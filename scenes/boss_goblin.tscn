@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://d0wvpn7hy21ib"]
+[gd_scene load_steps=16 format=3 uid="uid://d0wvpn7hy21ib"]
 
 [ext_resource type="Script" path="res://scripts/purple_goblin.gd" id="1_meqs4"]
 [ext_resource type="PackedScene" uid="uid://cad2t26wtffdr" path="res://scenes/flippable_sprite.tscn" id="2_onvct"]
 [ext_resource type="Texture2D" uid="uid://cqp012aoxvkyc" path="res://assets/Tiny Swords (Update 010)/Factions/Goblins/Troops/Torch/Yellow/Torch_Yellow.png" id="3_24i44"]
 [ext_resource type="PackedScene" uid="uid://xxcqotnlly3f" path="res://scenes/weapon.tscn" id="4_n4lmn"]
 [ext_resource type="PackedScene" uid="uid://pk4y1fk0k8s2" path="res://scenes/flippable_shape.tscn" id="5_sr5pc"]
+[ext_resource type="AudioStream" uid="uid://bqfy8uwfcr1he" path="res://assets/audio/enemy_hurt/roblox-death-sound-effect.mp3" id="6_553er"]
+[ext_resource type="AudioStream" uid="uid://38mg5kggajhv" path="res://assets/audio/enemy_die/final_5f65c7eaa80098002910ff9d_342213-2 (mp3cut.net).mp3" id="7_gi0gq"]
 
 [sub_resource type="Animation" id="Animation_3ubv3"]
 length = 0.001
@@ -361,5 +363,11 @@ flippable_sprite = NodePath("../FlippableSprite")
 position = Vector2(-41.1765, -41.1765)
 rotation = 1.5708
 disabled = true
+
+[node name="hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_553er")
+
+[node name="die" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_gi0gq")
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

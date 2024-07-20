@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://cscrfi3nh844d"]
+[gd_scene load_steps=18 format=3 uid="uid://cscrfi3nh844d"]
 
 [ext_resource type="Texture2D" uid="uid://k4lcu5byuyl" path="res://assets/kennny-tiny-dungeon/Tilemap/tilemap.png" id="1_fe3mx"]
 [ext_resource type="Script" path="res://scripts/dungeonroom.gd" id="2_x2hed"]
 [ext_resource type="PackedScene" uid="uid://bji3nk44wronq" path="res://scenes/maze/rooms/room8.tscn" id="3_3l5ov"]
 [ext_resource type="PackedScene" uid="uid://be45on3og2vp4" path="res://scenes/door.tscn" id="4_iwuo3"]
-[ext_resource type="PackedScene" uid="uid://bxg1gmds1upa8" path="res://scenes/purple_goblin.tscn" id="5_2eqka"]
+[ext_resource type="PackedScene" uid="uid://cud8dlk11j1i" path="res://scenes/purple_goblin.tscn" id="5_2eqka"]
+[ext_resource type="AudioStream" uid="uid://bf65vpale3htj" path="res://assets/audio/doorOpen/success-48018.mp3" id="6_1c2j0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rdyv"]
 texture = ExtResource("1_fe3mx")
@@ -529,26 +530,17 @@ scale = Vector2(0.333333, 0.333333)
 [node name="PurpleGoblin" parent="Enemies" instance=ExtResource("5_2eqka")]
 position = Vector2(574.001, 164)
 
-[node name="Weapon" parent="Enemies/PurpleGoblin" index="4" node_paths=PackedStringArray("flippable_sprite")]
-flippable_sprite = NodePath("")
-
 [node name="PurpleGoblin2" parent="Enemies" instance=ExtResource("5_2eqka")]
 position = Vector2(327, 108)
-
-[node name="Weapon" parent="Enemies/PurpleGoblin2" index="4" node_paths=PackedStringArray("flippable_sprite")]
-flippable_sprite = NodePath("")
 
 [node name="PurpleGoblin3" parent="Enemies" instance=ExtResource("5_2eqka")]
 position = Vector2(216, 382)
 
-[node name="Weapon" parent="Enemies/PurpleGoblin3" index="4" node_paths=PackedStringArray("flippable_sprite")]
-flippable_sprite = NodePath("")
-
 [node name="PurpleGoblin4" parent="Enemies" instance=ExtResource("5_2eqka")]
 position = Vector2(625.001, 397)
 
-[node name="Weapon" parent="Enemies/PurpleGoblin4" index="4" node_paths=PackedStringArray("flippable_sprite")]
-flippable_sprite = NodePath("")
+[node name="newRoom" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_1c2j0")
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 

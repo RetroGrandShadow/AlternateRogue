@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bht8bjtp8lbtu"]
+[gd_scene load_steps=52 format=3 uid="uid://bht8bjtp8lbtu"]
 
 [ext_resource type="Texture2D" uid="uid://bcpwylpgshxbe" path="res://assets/JOJO/SpriteSheets/player/john_defeated.png" id="1_lbcwh"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ndrpc"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://lkts0u11obt3" path="res://assets/JOJO/SpriteSheets/player/john_run.png" id="4_1ttcv"]
 [ext_resource type="Texture2D" uid="uid://chlna1dfdv5g3" path="res://assets/JOJO/SpriteSheets/player/john_run_shoot_ng.png" id="5_17thd"]
 [ext_resource type="Texture2D" uid="uid://cyhsg4tkfwap5" path="res://assets/JOJO/SpriteSheets/player/john_stand_shooting.png" id="6_qt7rq"]
+[ext_resource type="AudioStream" uid="uid://imfclvgvc5ds" path="res://assets/audio/bullet/laser-gun-72558 (mp3cut.net).mp3" id="8_mec5h"]
+[ext_resource type="AudioStream" uid="uid://cnrdedbhplabi" path="res://assets/audio/player_die/dead-8bit-41400.mp3" id="9_lbh0v"]
+[ext_resource type="AudioStream" uid="uid://wbjjm2iomj0q" path="res://assets/audio/player_hurt/young-man-being-hurt-95628.mp3" id="10_qrfbv"]
+[ext_resource type="AudioStream" uid="uid://bcrqlvaclf35y" path="res://assets/audio/audio/80s-retro-beat-001-17882.mp3" id="11_3bxyb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ylwsp"]
 atlas = ExtResource("1_lbcwh")
@@ -331,6 +335,18 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-1, 2)
 shape = SubResource("CapsuleShape2D_fys0t")
+
+[node name="bullet" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_mec5h")
+
+[node name="die" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_lbh0v")
+
+[node name="hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_qrfbv")
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_3bxyb")
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://02c3rivps38e"]
+[gd_scene load_steps=21 format=3 uid="uid://02c3rivps38e"]
 
 [ext_resource type="Texture2D" uid="uid://k4lcu5byuyl" path="res://assets/kennny-tiny-dungeon/Tilemap/tilemap.png" id="1_gbwtp"]
 [ext_resource type="Script" path="res://scripts/dungeonroom.gd" id="2_ab5ah"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://be45on3og2vp4" path="res://scenes/door.tscn" id="4_cb525"]
 [ext_resource type="PackedScene" uid="uid://d0wvpn7hy21ib" path="res://scenes/boss_goblin.tscn" id="5_gqu52"]
 [ext_resource type="PackedScene" uid="uid://jwess2ts2ur1" path="res://scenes/maze/changeScene.tscn" id="6_u7i0h"]
+[ext_resource type="AudioStream" uid="uid://bf65vpale3htj" path="res://assets/audio/doorOpen/success-48018.mp3" id="7_5hwgj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rdyv"]
 texture = ExtResource("1_gbwtp")
@@ -547,6 +548,9 @@ scale = Vector2(0.85, 0.85)
 [node name="ChangeScene" parent="." instance=ExtResource("6_u7i0h")]
 position = Vector2(69.3333, 30)
 target_world = 1
+
+[node name="newRoom" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_5hwgj")
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 

@@ -15,6 +15,8 @@ func _on_player_detector_body_exited(body: Node2D) -> void:
 
 @export var is_last_room = false
 
+@onready var newRoom = $newRoom
+
 func _ready():
 	# Pobierz węzeł Enemies
 	var enemies_node = $Enemies
@@ -56,6 +58,8 @@ func remove_goblin(goblin: Node2D) -> void:
 		goblins.erase(goblin)
 
 func open_all_doors() -> void:
+	if newRoom != null:
+		newRoom.play()
 	for child in get_children():
 		if child is Area2D and child.has_method("open_door"):
 			child.open_door()
