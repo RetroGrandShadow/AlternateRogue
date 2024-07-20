@@ -12,9 +12,7 @@ func _ready():
 	$AnimatedSprite2D.play("idle")
 
 func _process(delta):
-	print("Bullet _process called")
 	position += direction * speed * delta
-	print("Bullet position: ", global_position)
 	
 	var camera = get_viewport().get_camera_2d()
 	if camera:
@@ -30,13 +28,10 @@ func _process(delta):
 		queue_free()
 
 func _on_Area2D_body_entered(body):
-	print("Bullet hit:", body)
 	if body is Enemy:
 		body._get_damage(attack_damage)
 	$AnimatedSprite2D.play("hit")
-	print("starting timer")
 	hit_timer.start(0.5)
 
 func _on_timer_timeout():
-	print("bullet timeout")
 	queue_free()
