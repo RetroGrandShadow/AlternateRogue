@@ -22,11 +22,25 @@ func _on_player_detector_body_exited(body: Node2D) -> void:
 
 @export var is_last_room = false
 
+#@export var is_first_room = false
+
+@onready var control = $Control
+
+@onready var control_door = $Control2
+
+@onready var control_level = $Control3
+
 @onready var newRoom = $newRoom
 
 func _ready():
 	# Pobierz węzeł Enemies
 	var enemies_node = $Enemies
+	
+	if control_door != null:
+		control_door.hide()
+		
+	if control_level != null:
+		control_level.hide()
 	
 	# Sprawdź, czy węzeł Enemies istnieje
 	if enemies_node:
@@ -54,15 +68,21 @@ func check_goblins() -> void:
 	
 	if not goblins_found:
 		print("No goblins found.")
-		open_all_doors()
-		if is_last_room:
-			open_next_level()
+		after_no_goblis()
 	else:
 		print("All goblins defeated! All doors are now open.")
 
 func remove_goblin(goblin: Node2D) -> void:
 	if goblins.has(goblin):
 		goblins.erase(goblin)
+
+func after_no_goblis() -> void:
+	open_all_doors()
+	if is_last_room:
+		open_next_level()
+		show_next_level_tut()
+	if control != null:
+		close_tutorial()
 
 func open_all_doors() -> void:
 	if newRoom != null:
@@ -77,3 +97,15 @@ func open_next_level() -> void:
 		if child is Area2D and child.has_method("update_is_to_teleport"):
 			child.update_is_to_teleport()
 	print("Next level opened.")
+
+func close_tutorial() -> void:
+	control.hide()
+	control_door.show()
+	await get_tree().create_timer(6.0).timeout
+	control_door.hide()
+	
+func show_next_level_tut() -> void:
+	if control_level != null:
+		control_level.show()
+		await get_tree().create_timer(6.0).timeout
+		control_level.hide()
