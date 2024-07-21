@@ -30,20 +30,10 @@ var activated: bool = false
 func _ready():
 	if is_boss : set_boss() 
 	player = get_node("/root/World/Player")
-	if player == null:
-		print("Error: Player node not found")
-	else:
-		print("Player node found")
 	Events.room_entered.connect(_on_room_entered)
 	Events.room_exited.connect(_on_room_exited)
 
 func _on_room_entered(room):
-	#self.tilemap = room  # Update tilemap when a room is entered
-	print("INSTANCE ID IS: ", self.get_instance_id())
-	print("aaa")
-	print("ROOM IS: ", room)
-	print("TILEMAP IS: ", tilemap)
-	#print("TILEMAP CHILDREN: ", tilemap.get_children())
 	if room == tilemap:
 		print("bbb")
 		activated = true

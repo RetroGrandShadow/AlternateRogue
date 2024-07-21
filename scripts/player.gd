@@ -7,6 +7,7 @@ signal health_changed
 var speed: float = 150
 var screen_size: Vector2
 var input_dir: Vector2
+var last_input_dir: Vector2 = Vector2.RIGHT  # Initialize to some default direction
 var last_position: Vector2  # Variable to store the last position
 var current_room: Node2D  # Variable to store the current room
 @onready var animated_sprite = $AnimatedSprite2D
@@ -100,6 +101,7 @@ func teleport_to_marker() -> void:
 	var marker = get_node("/root/World/DungeonRoom3/Marker2D")
 	if marker:
 		global_position = marker.global_position
+		print("teleported to marker. global position is ", global_position)
 	else:
 		print("Error: Marker2D not found!")
 
@@ -115,6 +117,7 @@ func update_animation(delta: float) -> void:
 	input_dir = Input.get_vector("left", "right", "up", "down")
 
 	if input_dir.length() > 0:
+		last_input_dir = input_dir  # Update last input direction
 		animated_sprite.animation = "run"
 		velocity = velocity.move_toward(input_dir * speed, ACCELERATION * delta)
 
@@ -131,7 +134,10 @@ func shoot():
 	var bullet = bullet_scene.instantiate()
 	bullet.position = position
 	get_tree().current_scene.add_child(bullet)
-	bullet.direction = input_dir.normalized()
+	if input_dir.length() == 0:
+		bullet.direction = last_input_dir.normalized()
+	else:
+		bullet.direction = input_dir.normalized()
 
 func _physics_process(delta: float) -> void:
 	if current_health > 0:
