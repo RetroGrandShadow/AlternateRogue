@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://bivbvv3byy5oy"]
+
+[ext_resource type="Texture2D" uid="uid://chk4e3o42evaq" path="res://assets/control/W.png" id="1_diqxf"]
+[ext_resource type="Texture2D" uid="uid://b85vqsq4cuipt" path="res://assets/control/A.png" id="2_aoxhm"]
+[ext_resource type="Texture2D" uid="uid://bnoto6d5x1a5s" path="res://assets/control/S.png" id="3_gyyc2"]
+[ext_resource type="Texture2D" uid="uid://cmkxsyoi2ejca" path="res://assets/control/D.png" id="4_eflgc"]
+[ext_resource type="Texture2D" uid="uid://dgpqp7tsfdgrw" path="res://assets/control/space.png" id="5_8x5hs"]
+[ext_resource type="SystemFont" uid="uid://j1ruo7hbisjw" path="res://assets/fonts/new_system_font.tres" id="6_tqrf8"]
+
+[node name="Control" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = -93.0
+offset_right = 250.0
+offset_bottom = -67.0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_tqrf8")
+theme_override_font_sizes/font_size = 20
+text = "Moving around"
+
+[node name="W" type="Sprite2D" parent="Label"]
+position = Vector2(-62, -17)
+scale = Vector2(2, 2)
+texture = ExtResource("1_diqxf")
+
+[node name="A" type="Sprite2D" parent="Label"]
+position = Vector2(-100, 20)
+scale = Vector2(2, 2)
+texture = ExtResource("2_aoxhm")
+
+[node name="S" type="Sprite2D" parent="Label"]
+position = Vector2(-62, 20)
+scale = Vector2(2, 2)
+texture = ExtResource("3_gyyc2")
+
+[node name="D" type="Sprite2D" parent="Label"]
+position = Vector2(-25, 20)
+scale = Vector2(2, 2)
+texture = ExtResource("4_eflgc")
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -119.0
+offset_top = -93.0
+offset_right = -1.0
+offset_bottom = -67.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_tqrf8")
+theme_override_font_sizes/font_size = 20
+text = "Shooting"
+
+[node name="Space" type="Sprite2D" parent="Label2"]
+position = Vector2(-50, 20)
+scale = Vector2(2, 2)
+texture = ExtResource("5_8x5hs")

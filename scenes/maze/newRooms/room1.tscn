@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d1mfarg6hqqcq"]
+[gd_scene load_steps=17 format=3 uid="uid://d1mfarg6hqqcq"]
 
 [ext_resource type="Texture2D" uid="uid://k4lcu5byuyl" path="res://assets/kennny-tiny-dungeon/Tilemap/tilemap.png" id="1_xu4mb"]
 [ext_resource type="Script" path="res://scripts/dungeonroom.gd" id="2_cwt4c"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://j1wi2ksfhlat" path="res://scenes/maze/rooms/room1.tscn" id="3_8qyln"]
 [ext_resource type="PackedScene" uid="uid://cud8dlk11j1i" path="res://scenes/purple_goblin.tscn" id="5_i6bh4"]
 [ext_resource type="AudioStream" uid="uid://bf65vpale3htj" path="res://assets/audio/doorOpen/success-48018.mp3" id="6_ivd28"]
+[ext_resource type="PackedScene" uid="uid://bivbvv3byy5oy" path="res://scenes/Tutorial/Control.tscn" id="7_2m02x"]
+[ext_resource type="PackedScene" uid="uid://dj6aqhj10kmj4" path="res://scenes/Tutorial/NextDoorTutorial.tscn" id="8_rx7on"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rdyv"]
 texture = ExtResource("1_xu4mb")
@@ -506,13 +508,7 @@ position = Vector2(0, -0.333333)
 scale = Vector2(0.333333, 0.333333)
 
 [node name="PurpleGoblin" parent="Enemies" instance=ExtResource("5_i6bh4")]
-position = Vector2(683, 272)
-
-[node name="PurpleGoblin2" parent="Enemies" instance=ExtResource("5_i6bh4")]
-position = Vector2(327, 108)
-
-[node name="Weapon" parent="Enemies/PurpleGoblin2" index="4" node_paths=PackedStringArray("flippable_sprite")]
-flippable_sprite = NodePath("../../PurpleGoblin/FlippableSprite")
+position = Vector2(818.001, 265)
 
 [node name="PurpleGoblin3" parent="Enemies" instance=ExtResource("5_i6bh4")]
 position = Vector2(216, 382)
@@ -520,19 +516,15 @@ position = Vector2(216, 382)
 [node name="Weapon" parent="Enemies/PurpleGoblin3" index="4" node_paths=PackedStringArray("flippable_sprite")]
 flippable_sprite = NodePath("../../PurpleGoblin/FlippableSprite")
 
-[node name="PurpleGoblin4" parent="Enemies" instance=ExtResource("5_i6bh4")]
-position = Vector2(625.001, 397)
-
-[node name="Weapon" parent="Enemies/PurpleGoblin4" index="4" node_paths=PackedStringArray("flippable_sprite")]
-flippable_sprite = NodePath("../../PurpleGoblin/FlippableSprite")
-
 [node name="newRoom" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_ivd28")
+
+[node name="Control" parent="." instance=ExtResource("7_2m02x")]
+
+[node name="Control2" parent="." instance=ExtResource("8_rx7on")]
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 
 [editable path="DoorUp"]
 [editable path="Enemies/PurpleGoblin"]
-[editable path="Enemies/PurpleGoblin2"]
 [editable path="Enemies/PurpleGoblin3"]
-[editable path="Enemies/PurpleGoblin4"]
