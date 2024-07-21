@@ -9,9 +9,7 @@ const ACCELERATION = 80.0
 var player_position: Vector2
 var target_position: Vector2
 
-
-@onready var tilemap = get_parent().get_parent()
-
+var tilemap: TileMap  # Define tilemap as a member variable
 @onready var player: Node2D = null
 @onready var current_health: int = 2
 @onready var animation = $AnimationPlayer
@@ -19,9 +17,7 @@ var target_position: Vector2
 @onready var weapon = $Weapon
 
 var attack_damage: int = 1
-
 var flipped = false
-
 var activated: bool = false
 
 func _ready():
@@ -30,17 +26,34 @@ func _ready():
 		print("Error: Player node not found")
 	else:
 		print("Player node found")
-	Events.room_entered.connect(func(room):
-		if room == tilemap:
-			activated = true
-		else:
-			activated = false
-	)
-	
-	Events.room_exited.connect(func(room):
-		if room == tilemap:
-			activated = false
-	)
+	Events.room_entered.connect(_on_room_entered)
+	Events.room_exited.connect(_on_room_exited)
+
+func _on_room_entered(room):
+	self.tilemap = room  # Update tilemap when a room is entered
+	print("INSTANCE ID IS: ", self.get_instance_id())
+	print("aaa")
+	print("ROOM IS: ", room)
+	print("TILEMAP IS: ", tilemap)
+	print("TILEMAP CHILDREN: ", tilemap.get_children())
+	if room == tilemap:
+		print("bbb")
+		activated = true
+	else:
+		print("ccc")
+		activated = false
+
+func _on_room_exited(room):
+	print("INSTANCE ID IS: ", self.get_instance_id())
+	print("ddd")
+	if room == tilemap:
+		print("eee")
+		activated = false
+	pass
+
+func activate_enemy():
+	self.tilemap = get_node("/root/World/DungeonRoom3")
+	self.activated = true
 
 func _get_damage(attack_damage: int) -> void:
 	current_health -= attack_damage
@@ -52,7 +65,7 @@ func _get_damage(attack_damage: int) -> void:
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body is Bullet:
 		_get_damage(body.attack_damage)
-		
+
 func _check_door() -> void:
 	var parent_room = get_parent()
 	while parent_room and not parent_room.has_method("check_goblins"):
@@ -61,13 +74,14 @@ func _check_door() -> void:
 	if parent_room:
 		parent_room.remove_goblin(self)
 		parent_room.check_goblins()
-		
-		
+
 func active_enemy(delta) -> void:
 	player_position = player.global_position
 	target_position = (player_position - global_position).normalized()
 	
-	if tilemap.get_coords_for_body_rid(player.get_node("HitBox").get_rid()) != null:
+	#print("tilemap is: ", tilemap)
+	#print("sprite is: ", sprite)
+	if tilemap != null and tilemap.get_coords_for_body_rid(player.get_node("HitBox").get_rid()) != null:
 		if global_position.distance_to(player_position) > 50: 
 			velocity = velocity.move_toward(target_position * SPEED, ACCELERATION * delta)
 			animation.play("run")
@@ -89,6 +103,7 @@ func active_enemy(delta) -> void:
 			else:
 				animation.play("attack_up")
 	else:
+		print("Tilemap or HitBox is null")
 		velocity = velocity.move_toward(Vector2.ZERO, ACCELERATION * delta)
 
 func find_player() -> Node:
@@ -106,7 +121,6 @@ func _physics_process(delta) -> void:
 		active_enemy(delta)
 	else:
 		animation.play("idle")
-
 
 func _on_Enemy_died():
 	pass # Replace with function body.

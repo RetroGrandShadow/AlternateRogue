@@ -1,9 +1,16 @@
 extends TileMap
 
+@onready var player: Player = null
+
 # player entered the room
 func _on_player_detector_body_entered(body: Node2D) -> void:
-	print("dupa")
 	Events.room_entered.emit(self)
+	print("CALLED DUNGEONROOM 1 _ON_PLAYER_DETECTOR_BODY_ENTERED")
+	print("player position: ", body.global_position)
+	if body is Player:
+		player = body
+		player.set_current_room(self)
+	print("dupa")
 
 
 func _on_player_detector_body_exited(body: Node2D) -> void:

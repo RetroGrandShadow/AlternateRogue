@@ -479,3 +479,4 @@ position = Vector2(158.333, 86.6667)
 [node name="EnemySpawner" parent="." instance=ExtResource("4_m5oh1")]
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
