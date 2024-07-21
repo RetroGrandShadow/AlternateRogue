@@ -15,22 +15,30 @@ var bullet_scene = preload("res://scenes/AnimatedBullet.tscn")
 @export var max_health: int = 3
 @onready var current_health: int = max_health
 
-
+@onready var bullet_audio = $bullet
+@onready var die_audio = $die
+@onready var hurt_audio = $hurt
+@onready var music_audio = $music
 
 var did_died: bool = false
 
 func _ready() -> void:
+	music_audio.play()
 	# Set player at the center of the screen
 	screen_size = get_viewport_rect().size
 	position = screen_size / 2
 
 func _get_damage(attack_damage: int) -> void:
 	current_health -= attack_damage
+	hurt_audio.play()
 	if not is_in_dungeon_room_3():
 		teleport_to_marker()
 	health_changed.emit(current_health)
 	if current_health <= 0 and not did_died:
 		die()
+	else:
+		if current_health > 0 and not did_died:
+			hurt_audio.play()
 
 # TODO this gives false negatives
 func is_in_dungeon_room_3() -> bool:
@@ -79,6 +87,15 @@ func die() -> void:
 	animated_sprite.play("die")
 	if !animated_sprite.animation_finished:
 		animated_sprite.stop()
+	
+	var end_screen_scene = preload("res://scenes/maze/Dead.tscn")
+	if end_screen_scene:
+		var end_screen = end_screen_scene.instantiate()
+		get_tree().current_scene.add_child(end_screen)
+	else:
+		print("Error: Could not load EndScreen.tscn")
+	#await get_tree().create_timer(1.0).timeout
+	die_audio.play()
 
 func teleport_to_marker() -> void:
 	var marker = get_node("/root/World/DungeonRoom3/Marker2D")
@@ -110,6 +127,7 @@ func update_animation(delta: float) -> void:
 
 #nie widac strzału na innym pokoju niż pierwszym
 func shoot():
+	bullet_audio.play()
 	var bullet = bullet_scene.instantiate()
 	bullet.position = position
 	get_tree().current_scene.add_child(bullet)

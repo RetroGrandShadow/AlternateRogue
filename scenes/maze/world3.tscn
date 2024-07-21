@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddam6wyalulwv"]
+[gd_scene load_steps=4 format=3 uid="uid://ddam6wyalulwv"]
 
 [ext_resource type="PackedScene" uid="uid://bht8bjtp8lbtu" path="res://scenes/player.tscn" id="1_4aj8m"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="2_ttysn"]
 [ext_resource type="PackedScene" uid="uid://bs15vyigm747p" path="res://scenes/maze/floors/floor2.tscn" id="3_oglip"]
-[ext_resource type="PackedScene" uid="uid://jwess2ts2ur1" path="res://scenes/maze/changeScene.tscn" id="5_s61o6"]
 
 [node name="World" type="Node"]
 
@@ -20,7 +19,3 @@ position_smoothing_speed = 10.0
 script = ExtResource("2_ttysn")
 
 [node name="Floor2" parent="." instance=ExtResource("3_oglip")]
-
-[node name="ChangeScene" parent="." instance=ExtResource("5_s61o6")]
-position = Vector2(1067, -2028)
-target_world = 1

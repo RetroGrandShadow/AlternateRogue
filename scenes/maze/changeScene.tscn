@@ -7,6 +7,7 @@
 size = Vector2(49, 41)
 
 [node name="ChangeScene" type="Area2D"]
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_k5koq")
 metadata/_edit_group_ = true
 

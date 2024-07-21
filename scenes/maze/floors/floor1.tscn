@@ -8,7 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cejpuu4g21pto" path="res://scenes/maze/newRooms/room6.tscn" id="6_4esh0"]
 [ext_resource type="PackedScene" uid="uid://cuu0qeu8gonid" path="res://scenes/maze/newRooms/room7.tscn" id="7_s8gi6"]
 
-[node name="Floor1" type="Node"]
+[node name="Floor1" type="TileMap"]
+format = 2
 
 [node name="NewRoom1" parent="." instance=ExtResource("1_sn7ye")]
 position = Vector2(-9, -37)

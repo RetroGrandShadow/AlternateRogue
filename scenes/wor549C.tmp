@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://sh3iohl3k37k"]
+
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_asp4o"]
+[ext_resource type="PackedScene" uid="uid://bht8bjtp8lbtu" path="res://scenes/player.tscn" id="1_nq2cp"]
+[ext_resource type="PackedScene" uid="uid://cckkqhjp7huud" path="res://scenes/dungeonroom.tscn" id="2_qxjmj"]
+[ext_resource type="Script" path="res://scripts/Camera2D.gd" id="3_q0w4n"]
+[ext_resource type="PackedScene" uid="uid://cud8dlk11j1i" path="res://scenes/purple_goblin.tscn" id="4_sx25o"]
+[ext_resource type="PackedScene" uid="uid://ddryb35b7nudj" path="res://scenes/hearth_container.tscn" id="5_b2rs6"]
+[ext_resource type="PackedScene" uid="uid://6fldiatqmhty" path="res://scenes/dungeonroom2.tscn" id="5_ujkoc"]
+[ext_resource type="PackedScene" uid="uid://cobf34q76m1ix" path="res://scenes/maze/floors/floor1.tscn" id="8_1xbqs"]
+[ext_resource type="PackedScene" uid="uid://bs15vyigm747p" path="res://scenes/maze/floors/floor2.tscn" id="9_pmwew"]
+[ext_resource type="PackedScene" uid="uid://c24d1nkv7fmlv" path="res://scenes/maze/floors/floor3.tscn" id="10_mpl58"]
+
+[node name="World" type="Node"]
+script = ExtResource("1_asp4o")
+
+[node name="Player" parent="." instance=ExtResource("1_nq2cp")]
+z_index = 9
+position = Vector2(377, 280)
+scale = Vector2(3, 3)
+
+[node name="DungeonRoom" parent="." instance=ExtResource("2_qxjmj")]
+position = Vector2(-7886, -2292)
+
+[node name="Enemies" type="Node2D" parent="DungeonRoom"]
+position = Vector2(0, -0.333333)
+scale = Vector2(0.333333, 0.333333)
+
+[node name="PurpleGoblin" parent="DungeonRoom/Enemies" instance=ExtResource("4_sx25o")]
+position = Vector2(683, 272)
+
+[node name="DungeonRoom2" parent="." instance=ExtResource("2_qxjmj")]
+position = Vector2(-7886, -2820)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(482, 259)
+scale = Vector2(3, 3)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("3_q0w4n")
+
+[node name="DungeonRoom3" parent="." instance=ExtResource("5_ujkoc")]
+position = Vector2(-8309, -7324)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HearthContainer" parent="CanvasLayer" instance=ExtResource("5_b2rs6")]
+
+[node name="Floor1" parent="." instance=ExtResource("8_1xbqs")]
+
+[node name="Floor2" parent="." instance=ExtResource("9_pmwew")]
+position = Vector2(-4688, 214)
+
+[node name="Floor3" parent="." instance=ExtResource("10_mpl58")]
+position = Vector2(4159, -3678)
+
+[connection signal="body_entered" from="DungeonRoom/Enemies/PurpleGoblin/HitBox" to="Player" method="_on_hit_box_body_entered"]
+
+[editable path="DungeonRoom/Enemies/PurpleGoblin"]

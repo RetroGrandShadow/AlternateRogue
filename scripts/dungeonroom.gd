@@ -13,6 +13,10 @@ func _on_player_detector_body_exited(body: Node2D) -> void:
 
 @onready var goblins: Array[Node2D] = []
 
+@export var is_last_room = false
+
+@onready var newRoom = $newRoom
+
 func _ready():
 	# Pobierz węzeł Enemies
 	var enemies_node = $Enemies
@@ -44,6 +48,8 @@ func check_goblins() -> void:
 	if not goblins_found:
 		print("No goblins found.")
 		open_all_doors()
+		if is_last_room:
+			open_next_level()
 	else:
 		print("All goblins defeated! All doors are now open.")
 
@@ -52,7 +58,15 @@ func remove_goblin(goblin: Node2D) -> void:
 		goblins.erase(goblin)
 
 func open_all_doors() -> void:
+	if newRoom != null:
+		newRoom.play()
 	for child in get_children():
 		if child is Area2D and child.has_method("open_door"):
 			child.open_door()
 	print("Doors opened.")
+	
+func open_next_level() -> void:
+	for child in get_children():
+		if child is Area2D and child.has_method("update_is_to_teleport"):
+			child.update_is_to_teleport()
+	print("Next level opened.")
