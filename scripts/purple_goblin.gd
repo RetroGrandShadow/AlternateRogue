@@ -4,23 +4,31 @@ class_name Enemy
 
 signal died  # Signal to be emitted when the enemy dies
 
-const SPEED = 100.0
-const ACCELERATION = 80.0
+var SPEED = 100.0
+var ACCELERATION = 80.0
 var player_position: Vector2
 var target_position: Vector2
 
-var tilemap: TileMap  # Define tilemap as a member variable
+#var tilemap: TileMap  # Define tilemap as a member variable
+@onready var tilemap = get_parent().get_parent()
 @onready var player: Node2D = null
 @onready var current_health: int = 2
 @onready var animation = $AnimationPlayer
 @onready var sprite = $FlippableSprite
 @onready var weapon = $Weapon
 
+@onready var hurt_audio = $hurt
+@onready var die_audio = $die
+
+@export var is_boss = false
+
+
 var attack_damage: int = 1
 var flipped = false
 var activated: bool = false
 
 func _ready():
+	if is_boss : set_boss() 
 	player = get_node("/root/World/Player")
 	if player == null:
 		print("Error: Player node not found")
@@ -30,12 +38,12 @@ func _ready():
 	Events.room_exited.connect(_on_room_exited)
 
 func _on_room_entered(room):
-	self.tilemap = room  # Update tilemap when a room is entered
+	#self.tilemap = room  # Update tilemap when a room is entered
 	print("INSTANCE ID IS: ", self.get_instance_id())
 	print("aaa")
 	print("ROOM IS: ", room)
 	print("TILEMAP IS: ", tilemap)
-	print("TILEMAP CHILDREN: ", tilemap.get_children())
+	#print("TILEMAP CHILDREN: ", tilemap.get_children())
 	if room == tilemap:
 		print("bbb")
 		activated = true
@@ -58,9 +66,13 @@ func activate_enemy():
 func _get_damage(attack_damage: int) -> void:
 	current_health -= attack_damage
 	if current_health <= 0:
+		die_audio.play()
+		await get_tree().create_timer(0.5).timeout
 		emit_signal("died")
 		queue_free()
 		_check_door()
+	else:
+		hurt_audio.play()
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body is Bullet:
@@ -124,3 +136,20 @@ func _physics_process(delta) -> void:
 
 func _on_Enemy_died():
 	pass # Replace with function body.
+	
+
+func _check_new_level() -> void:
+	var parent_room = get_parent()
+	while parent_room and not parent_room.has_method("check_goblins"):
+		parent_room = parent_room.get_parent()
+	
+	if parent_room:
+		parent_room.remove_goblin(self)
+		parent_room.check_goblins()
+
+func set_boss() -> void:
+	var bonus = 1.3
+	current_health = 3
+	
+	SPEED = SPEED * bonus
+	ACCELERATION = ACCELERATION * bonus

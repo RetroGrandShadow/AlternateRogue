@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://38mg5kggajhv"
+path="res://.godot/imported/final_5f65c7eaa80098002910ff9d_342213-2 (mp3cut.net).mp3-8dfb101dba288e138f6876f20af7a8b0.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/enemy_die/final_5f65c7eaa80098002910ff9d_342213-2 (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/final_5f65c7eaa80098002910ff9d_342213-2 (mp3cut.net).mp3-8dfb101dba288e138f6876f20af7a8b0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://2t245wfyqn67" path="res://scenes/maze/newRooms/room4.tscn" id="7_d64h6"]
 [ext_resource type="PackedScene" uid="uid://02c3rivps38e" path="res://scenes/maze/newRooms/room19.tscn" id="8_g1ib4"]
 
-[node name="Floor1" type="Node"]
+[node name="Floor1" type="TileMap"]
+format = 2
 
 [node name="NewRoom8" parent="." instance=ExtResource("1_lvcg8")]
 position = Vector2(-40, 0)
@@ -34,3 +35,6 @@ position = Vector2(1351, -1596)
 
 [node name="NewRoom7" parent="." instance=ExtResource("8_g1ib4")]
 position = Vector2(871, -2121)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(435, 258)

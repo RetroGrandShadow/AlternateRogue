@@ -1,9 +1,10 @@
 extends CanvasLayer
 
-
+@onready var audio = $AudioStreamPlayer2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if audio != null:
+		audio.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -12,7 +13,7 @@ func _process(delta):
 
 
 func _on_start_again_pressed():
-	get_tree().change_scene_to_file("res://scenes/maze/world2.tscn")
+	get_tree().change_scene_to_file("res://scenes/world.tscn")
 
 
 func _on_quit_pressed():
