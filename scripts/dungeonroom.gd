@@ -10,7 +10,6 @@ func _on_player_detector_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player = body
 		player.set_current_room(self)
-	print("dupa")
 
 
 func _on_player_detector_body_exited(body: Node2D) -> void:

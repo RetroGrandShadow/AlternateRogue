@@ -5,7 +5,6 @@
 [node name="EnemySpawner" type="Node2D"]
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_f7w82")
-room_size = Vector2(1000, 500)
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 3.0

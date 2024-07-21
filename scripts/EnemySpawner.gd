@@ -6,7 +6,7 @@ extends Node
 @export var initial_spawn_interval: float = 1.0
 @export var faster_spawn_interval: float = 0.1
 @export var spawn_distance_min: float = 100.0
-@export var room_size: Vector2  # TODO: Dynamically calculate room size
+@export var room_size: Vector2 = Vector2(880, 430)
 
 @onready var spawn_timer = $SpawnTimer
 
@@ -18,10 +18,6 @@ var wave_completed: bool = false
 var active_enemies: int = 0
 
 func _ready():
-	#if enemy_scene == null:
-		#print("Error: enemy_scene is not assigned")
-	#else:
-		#print("enemy_scene assigned successfully")
 	pass
 
 func start_spawning(player_node: Node2D):
@@ -69,9 +65,7 @@ func spawn_enemy():
 	enemy.position = spawn_position
 	
 	add_child(enemy)
-	print("calling activate enemy...")
 	enemy.activate_enemy()
-	print("Enemy activated:", enemy.activated)
 
 	active_enemies += 1
 	enemy.connect("died", Callable(self, "_on_enemy_died"))
@@ -112,6 +106,7 @@ func get_random_position() -> Vector2:
 			randf() * room_size.x,
 			randf() * room_size.y
 		)
+		position += Vector2(50, 50)
 		if position.distance_to(player.position) >= spawn_distance_min:
 			valid_position = true
 	return position

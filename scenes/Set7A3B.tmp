@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvek3jphjgcrx"]
+
+[ext_resource type="Script" path="res://scripts/SettingsScreen.gd" id="1_roycc"]
+[ext_resource type="FontFile" uid="uid://bwli00ajq1r26" path="res://assets/fonts/Minecraft.ttf" id="2_at5pe"]
+[ext_resource type="Script" path="res://scripts/ActionButton.gd" id="3_v5hpy"]
+
+[node name="SettingsSceen" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_roycc")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -389.0
+offset_top = -219.0
+offset_right = 453.0
+offset_bottom = -159.0
+theme_override_fonts/normal_font = ExtResource("2_at5pe")
+theme_override_font_sizes/normal_font_size = 50
+text = "Click buttons to remap controls:"
+
+[node name="ActionButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("3_v5hpy")
